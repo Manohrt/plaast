@@ -12,7 +12,7 @@
           <%end%>
   	</Row>
     <%t=1%>
- <%$lrod1.each do|k|%>
+ <%$lrod.each do|k|%>
  <%if Labour.where(:issue_id=>k.id).any?%>
       <Row>
         <%$lrfd.each do|i|%>

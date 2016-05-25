@@ -368,7 +368,7 @@ skip_before_action :check_session, :only=>[:login,:validate_login]
     @is=@liss.select{|i| @liss.count(i) > 1}
     @lr=@lrr.select{|i| @lrr.count(i) > 1}
     @labour = Labour.where(:issue_date => $lrs..$lre)#.select((@is+["id"]).join(','))
-    @production_report=ProductionReport.where("date IS '#{$prs..$pre}'")#@issue.select{|i| ProductionReport.where("id IS '#{i.id} AND date IS '#{$prs..$pre}'").select((@pr+["id","issue_id"]).join(','))}
+    @production_report=ProductionReport.where(:date=> $lrs..$lre)#@issue.select{|i| ProductionReport.where("id IS '#{i.id} AND date IS '#{$prs..$pre}'").select((@pr+["id","issue_id"]).join(','))}
     @lrod=@labour+@production_report
     $lrod=@lrod
     @labour1=Labour.labour_to_csv
@@ -380,9 +380,8 @@ skip_before_action :check_session, :only=>[:login,:validate_login]
 	  end
 
 	  def report_labour
-	   @labour=ProductionReport.where(:date => $prs..$pre)
-     $lrod1=$lrod
-	  end
+	   @labour=ProductionReport.where(:date => $lrs..$lre)
+    end
 	   
 	   def add_purchase
 	     @user = User.new
