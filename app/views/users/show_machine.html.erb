@@ -1,0 +1,36 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                     Show Machine Maintenance
+                      <div class="add">
+<%= link_to users_index_machineMaintenance_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do %><i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                      <div class="table-container">
+<table class="table">
+
+<tr><td>Machine No</td>
+<td><%= @machine_maintenance.mach_no %></td></tr>
+<tr><td>Type of Machine problem</td>
+<td><%= @machine_maintenance.type_of_prob %></td></tr>
+<tr><td><%= Date %></td>
+<td><%=@machine_maintenance.date%></td></tr>
+<tr><td>Spare Name</td>
+<td><%= @machine_maintenance.spare_name %></td></tr>
+<tr><td>Spare Cost</td>
+<td><%= @machine_maintenance.spare_cost %></td></tr>
+<tr><td>Created_by:</td>
+<td><%= @machine_maintenance.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @machine_maintenance.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @machine_maintenance.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @machine_maintenance.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>

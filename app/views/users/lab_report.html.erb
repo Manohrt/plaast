@@ -1,0 +1,78 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Labour
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+
+<%= form_for :labour, :url=>{ :controller => "users", :action => "labour_report",:method => "get"} do |i| %>
+<center><table>
+	<tr style=border-color:#252525>
+<td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info", :onclick=> "return validate()"%></td>
+</tr>
+</table>
+</center>
+</div>
+<br><br>
+
+  <table class="table">
+  	<tr><td>
+<input type="checkbox" id="selectall" onClick="selectAll(this)" />  Select All </td></tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="order_no/Order Number">Order No</td>
+<td><input type="checkbox" name=subject[] value="order_date/Order Date">Order Date</td>
+<td><input type="checkbox" name=subject[] value="party/Party">Party</td>
+<td><input type="checkbox" name=subject[] value="issue_slip_no/Issue Slip No">Issue Slip No</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="issue_date/Issue Date">Issue Date</td>
+<td><input type="checkbox" name=subject[] value="shift/Shift">Shift</td>
+<td><input type="checkbox" name=subject[] value="finished_goods_name/Finished Goods Name">Finished Goods Name</td>
+<td><input type="checkbox" name=subject[] value="total_no_of_items_produced/Total No of Item Produced">Total No of Item Produced</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="weight_per_item/Weight Per Item Cavity">Weight Per Item Cavity</td>
+<td><input type="checkbox" name=subject[] value="machine_no/Machine No">Machine No</td>
+<td><input type="checkbox" name=subject[] value="mould/Mould Number">Mould Number</td>
+<td><input type="checkbox" name=subject[] value="no_of_persons/No of Persons">No of Persons</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="other_work/Other Work">Other Work</td>
+<td><input type="checkbox" name=subject[] value="nature/Nature">Nature</tr>
+<td><input type="checkbox" name=subject[] value="rate_per_person/Rate Per Person">Rate Per Person</td>
+<td><input type="checkbox" name=subject[] value="cost_per_shift/Cost Per Shift">Cost Per Shift</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="no_of_cavity/No of Cavity">No of Cavity</td>
+<td><input type="checkbox" name=subject[] value="cycle_time/Cycle Time">Cycle Time</td>
+<td><input type="checkbox" name=subject[] value="pro_time/Production Cycle Time">Production Cycle Time</td>
+<td><input type="checkbox" name=subject[] value="working_hrs/Working Hours">Working Hours</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="expected_production/Expected Production">Expected Production</td>
+<td><input type="checkbox" name=subject[] value="total_no_of_items_produced/Total No of Item Produced">Total No of Item Produced</td>
+<td><input type="checkbox" name=subject[] value="difference/Difference">Difference</td>
+<td><input type="checkbox" name=subject[] value="efficiency/Efficiency in %">Efficiency in %</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="no_of_hrs_idle/No of Hrs IDLE Time">No of Hrs IDLE Time</td>
+<td><input type="checkbox" name=subject[] value="no_of_mins_idle/No of Minutes IDLE Time">No of Minutes IDLE Time</td>
+<td><input type="checkbox" name=subject[] value="reasons_for_idle/Reasons for IDLE Time">Reasons for IDLE Time</td>
+<td><input type="checkbox" name=subject[] value="remarks/Remarks">Remarks</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="supervisor_name/Supervisor Name">Supervisor Name</td>
+</tr>
+</table>
+<% end %>
+</div>
+</div>
+</div>
+</div>

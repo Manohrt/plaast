@@ -1,0 +1,54 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Purchase </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_purchase_path, class:"fa fa-close" %></b></h3>
+<table class="table">
+<tr><td>GRN No:</td>
+<td><%= @purchase.grn_no %></td></tr>
+<tr><td>Date:</td>
+<td><%= @purchase.date %></td></tr>
+<tr><td>Party:</td>
+<td><%= @purchase.party%></td></tr>
+<tr><td>Trading Material:</td>
+<td><%= @purchase.trading_material %></td></tr>
+<tr><td>Item:</td>
+<td><%= @purchase.item %></td></tr>
+<tr><td>Bill Quantity:</td>
+<td><%= @purchase.desc %></td></tr>
+<tr><td>Qty Received </td>
+<td><%= @purchase.qty_received %></td></tr>
+<tr><td>Qty Accepted:</td>
+<td><%= @purchase.qty_accepted %></td></tr>
+<tr><td>Rejected:</td>
+<td><%= @purchase.rejected %></td></tr>
+<tr><td>Bill Value:</td>
+<td><%= @purchase.bill_value %></td></tr>
+<tr><td>Rate:</td>
+<td><%= @purchase.rate.to_f.round(2) %></td></tr>
+<tr><td>Debit:</td>
+<td><%= @purchase.debit.to_f.round(2)%></td></tr>
+<tr><td>Reasons:</td>
+<td><%= @purchase.reasons %></td></tr>
+<tr><td>Created_by</td>
+<td><%= @purchase.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @purchase.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @purchase.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @purchase.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

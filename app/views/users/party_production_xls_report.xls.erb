@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">S.No</Data></Cell>
+        <Cell><Data ss:Type="String">Party</Data></Cell>
+        <Cell><Data ss:Type="String">no of kgs used productuion</Data></Cell>
+        <Cell><Data ss:Type="String">Rank</Data></Cell>
+        <Cell><Data ss:Type="String">Percentage</Data></Cell>
+        <Cell><Data ss:Type="String">Pending production</Data></Cell>
+       </Row>
+        <%t,n=0,0%>
+	<%@abb = 0%>
+        <% $sas.each do |i| %>
+        <%n=n+1%>
+        <%t=t+1%>
+      <Row>
+        <Cell><Data ss:Type="String"><%= n%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i[0]%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i[1]%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t%></Data></Cell>
+        <%@ab=(i[1].to_i/$oo.to_f)*100%>
+        <Cell><Data ss:Type="String"><%= (@ab).round(2)%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i[2]%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i[3]%></Data></Cell>
+	<% @abb = @abb + @ab %>
+      </Row>
+    <% end %>
+     <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+       <Cell><Data ss:Type="String">Total</Data></Cell>
+       <Cell><Data ss:Type="String"><%= $oo.round(2)%></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+	<Cell><Data ss:Type="String"><%=@abb.round(2)%></Data></Cell>
+	<Cell><Data ss:Type="String"><%=$too.round(2)%></Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>

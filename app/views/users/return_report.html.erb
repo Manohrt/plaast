@@ -1,0 +1,38 @@
+<div class="bod">
+<%if admin?%>
+<div class="add"><%= link_to users_return_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h4>Return Report</h4>
+<div class="table stripped custab">
+<table class="table">
+<th>S.No</th>
+<th>Order<br>No</th>
+<th>Return<br>GRN<br>No</th>
+<th>Item</th>
+<th>Date</th>
+<th>RM<br>Qty<br>Return</th>
+<th>Coloring Agent<br>Qty<br>Return</th>
+<th>RG<br>Rate<br>PerKG</th>
+<tr>
+<%t=0%>
+<%@issue.each do|i|%>
+<%t=t+1%>
+<%if Ireturn.exists?(:issue_id=>i.id)%>
+<%$is1=Issue.where(:id=>i.id)%>
+<tr>
+<td><%=t%></td>
+<td><%=$is1.maximum(:order_no)%></td>
+<%$pr1=Ireturn.where(:issue_id=>i.id)%>
+<td><%=$pr1.maximum(:grn_no)%></td>
+<td><%=$is1.maximum(:rm_issues)%></td>
+<td><%=$is1.maximum(:issue_date)%></td>
+<td><%=($is1.maximum(:rm_qty_return)).to_f.round(2)%></td>
+<td><%=$is1.maximum(:chem_qty_return)%></td>
+<td><%=$is1.maximum(:rg_rate)%></td>
+</tr>
+<%end%>
+<%end%>
+</table>
+</div>
+</div>

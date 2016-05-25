@@ -1,0 +1,53 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+        <div class="body-container">
+            <div class="body-header">
+                Show Finished
+               <div class="add">
+<%= link_to users_index_finished_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+         </div>
+      <div class="body-content">
+         <div class="table-container">
+<table class="table">
+
+<tr><td>Order No</td>
+<td><%= @issue[0].order_no%></td></tr>
+<tr><td>Order Date</td>
+<td><%= @issue[0].order_date %></td></tr>
+<tr><td> Party</td>
+<td><%= @issue[0].party %></td></tr>
+<tr><td> Material Cost</td>
+<td><%= @issue[0].consolidated_cost.to_f.round(4) %></td></tr>
+<tr><td> Labour Cost </td>
+<td><%= @labour[0].cost_per_shift.to_f.round(4) %></td></tr>
+<tr><td>Finished Goods Name </td>
+<td><%=  @production_report[0].finished_goods_name %></td></tr>
+<tr><td>Total No of Items Produced </td>
+<td><%=  @production_report[0].total_no_of_items_produced.to_f.round(4)  %></td></tr>
+<tr><td>  Rejected Nos </td>
+<td><%=  @production_report[0].rejected_nos  %></td></tr>
+<tr><td>Nett Available </td>
+<td><%=  @finished.nett_available  %></td></tr>
+<tr><td>Freight </td>
+<td><%=  @finished.freight.to_f.round(4)  %></td></tr>
+<tr><td>Overheads </td>
+<td><%=  @finished.overheads.to_f.round(4)   %></td></tr>
+<tr><td>Packing Materials </td>
+<td><%=  @finished.packing_materials %></td></tr>
+<tr><td>Created_by</td>
+<td><%= @finished.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @finished.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @finished.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @finished.updated_at.strftime("%m/%d/%y")%></td></tr>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>

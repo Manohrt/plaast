@@ -1,0 +1,49 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Idle Time Report
+                     <%if admin? and not @ss.blank?%>
+<div class="add"><%= link_to users_idle_time_report_xls_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>   
+<th>Issue date </th>                                                        
+<th>Shift</th>
+<th>Machine</th>
+<th>Product name</th>
+<th>Mould</th>
+<th>Expected qty</th>
+<th>Actual qty</th>
+<th>Number of minutes idle</th>
+<th>Reason</th>
+<th>Supervisor</th>
+</tr>
+</thead>
+<% if @ss.blank? then %>
+<table><th>No records to display</th></table>
+
+<%else%>
+<ul id= "Labour">
+
+<%$ss = @ss%>
+<% @ss.each do |i| %>
+<tr>
+<% i.each do |j|%>
+<td><%= j%></td>
+<%end%>
+<%end%>
+</table>
+</div>
+
+<% end %>
+
+</div>
+</div>
+</div>

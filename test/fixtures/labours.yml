@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_no: MyString
+  nature: MyString
+  difference: MyString
+  dated: MyString
+  rate_per_person: MyString
+  efficiency: MyString
+  party: MyString
+  cost_per_shift: MyString
+  no_of_hrs_idle: MyString
+  issue_slip_no: MyString
+  finished_goods_name: MyString
+  no_of_mins_idle: MyString
+  date: MyString
+  no_of_item_produced: MyString
+  reasons_for_idle: MyString
+  machine_used: MyString
+  weight_in_gms: MyString
+  idle_time_reasons_desc: MyString
+  mould_no: MyString
+  no_of_cavity: MyString
+  spares_name: MyString
+  shift: MyString
+  cycle_time: MyString
+  spares_cost: MyString
+  no_of_persons: MyString
+  working_hrs: MyString
+  supervisor_name: MyString
+  other_work: MyString
+  expected_production: MyString
+
+two:
+  order_no: MyString
+  nature: MyString
+  difference: MyString
+  dated: MyString
+  rate_per_person: MyString
+  efficiency: MyString
+  party: MyString
+  cost_per_shift: MyString
+  no_of_hrs_idle: MyString
+  issue_slip_no: MyString
+  finished_goods_name: MyString
+  no_of_mins_idle: MyString
+  date: MyString
+  no_of_item_produced: MyString
+  reasons_for_idle: MyString
+  machine_used: MyString
+  weight_in_gms: MyString
+  idle_time_reasons_desc: MyString
+  mould_no: MyString
+  no_of_cavity: MyString
+  spares_name: MyString
+  shift: MyString
+  cycle_time: MyString
+  spares_cost: MyString
+  no_of_persons: MyString
+  working_hrs: MyString
+  supervisor_name: MyString
+  other_work: MyString
+  expected_production: MyString

@@ -1,0 +1,134 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                     Rejection Analysis 
+                    <% if admin? and not @arr.blank?%>
+<div class="add"><%= link_to users_rejection_analysis_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">
+ <thead>
+ <tr>
+        <th>Issue Date</th>
+       	<th>Shift</th>
+		<th>Product Name</th>
+		<th>Raw Material</th>
+		<th>No of Cavity</th>
+		<th>Rejected Nos</th>
+		<th>Rejected %</th>
+		<th>Rejection Reason</th>
+		<th>Action taken</th>
+		<th>Supervisor Name</th>
+	</tr>
+ </thead>
+ <% if @arr.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+
+                <% $arr = @arr%>	
+		<% @arr.each do |i| %>
+		<tr class="odd">
+			<td><%= i[9] %></td>	
+			<td><%= i[0] %></td>
+		    <td><%= i[1] %></td>
+		    <td><%= i[2] %></td>
+		    <td><%= i[3] %></td>
+		    <td><%= i[4] %></td>
+		    <td><%= i[5] %></td>
+		    <td><%= i[6] %></td>
+		    <td><%= i[8] %></td>
+		    <td><%= i[7] %></td>
+
+		</tr>
+		
+		<% end %>
+		
+
+<% end %>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+
+<div class="bod">
+<%if admin?%>
+<div class="add"><%= link_to users_rejection_analysis_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h5>Rejection Analysis</h4>
+
+<div class="table striped custab">
+<table class="table">
+<th>S.No</th>
+<th>Order Number</th>
+<th>Party</th>
+<th>Shift</th>
+<th>Issue Slip<br>Number</th>
+<th>Total weight<br>consumed</th>
+<th>Rejected<br>Nos Wt for<br>Re-Grounding</th>
+<th>Lumps</th>
+<th>Rejection(%)</th>
+<%t=0%>
+<%$ttot=[]%>
+<% @production_report.each do |i| %>
+<%t=t+1%>
+<tr>
+<td><%=t%></td>
+<td><%= i.order_no%></td>
+<td><%= i.party%></td>
+<td><%= i.shift%></td>
+<td><%= i.issue_slip_no%></td>
+<td><%= i.total_weight_consumed.to_f.round(3) %></td>
+<td><%= i.rejected_nos_wt_for_re_grounding.to_f.round(3) %></td>
+<td><%= i.lumps.to_f.round(3)%></td>
+<%$ar = i.total_weight_consumed.to_f.round(3) %>
+<%$br = i.rejected_nos_wt_for_re_grounding.to_f.round(3) %>
+<%$cr = i.lumps.to_f.round(3)%>
+<%tt=($br+$cr)%>
+<%$total_rej=(tt/$ar)*100%>
+<td><%=$total_rej.to_f.round(3)%></td>
+<% $ttot << $total_rej.to_f.round(3)%>
+<%end%>
+<%$ttot=$ttot.inject{|sum ,i|i+sum}%>
+</tr>
+<td></td>
+<!--th>Total</th>
+<td></td>
+<td></td>
+<td></td>
+<td><!%=@a%></td>
+<td><!%=@b%></td>
+<td><!%=@c%></td>
+<td><!%=$ttot.round(2)%></td>
+</tr>
+<tr><td></td>
+	<th>Rejection Analysis in (%)</th>
+	<td><!%=@rejection.to_f.round(2)%></td-->
+</table>
+</div>
+</div>
+
+<% end %>

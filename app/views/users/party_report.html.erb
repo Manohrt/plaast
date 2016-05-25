@@ -1,0 +1,19 @@
+<div class="bod">
+<h4>Production Report</h4>
+<table class="table">
+<th>Party</th>
+<th>no of kgs used productuion</th>
+<%@ass.each do |j|%>
+<tr>
+<td><%=j[0]%></td>
+<td><%=j[1]%></td>
+<td><%=j[2]%></td>
+</tr>
+<%end%>
+<tr>
+<td>total</td>
+<td><%=@total%></td></tr>
+</table>
+</div>
+
+

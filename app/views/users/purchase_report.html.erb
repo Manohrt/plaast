@@ -1,0 +1,53 @@
+<script>
+$('#checkbox').on change {
+    if selected == selected
+        do what you are trying to do on $(this).element (like an ajax call)
+    else
+        undo what you did
+    end
+}
+</script>
+
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Purchase-Report
+                     <%if admin? and not @purchase.blank?%>
+<div class="add"><%= link_to users_purchase_sum_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>                             
+<th>Sl.no</th>
+<%$prhd.each do|i|%>
+<th><%=i%></th>
+<%end%>
+</tr>
+</thead>
+<!--%@purchase=@purch.sort_by{|i| i.party}%-->
+<% if @purchase.blank? then %>
+<table><th>No records to display</th></table>
+<% else %>
+<tbody>
+<%t=1%>
+<%@purchase.each do|k|%>
+<tr>
+<td>  <%= t %></td>
+<%$prfd.each do|i|%>
+<td>  <%= @purchase.where(:id=>k.id).maximum(i.to_sym)%></td>
+<%end%>
+</tbody>
+<%t=t+1%>
+    <% end %>
+</tr>
+</table>
+
+<% end %>
+</div>
+</div>
+</div>

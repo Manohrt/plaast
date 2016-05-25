@@ -1,0 +1,57 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="set">
+<div class="body-container">
+<div class="body-header">
+Production Report
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Production Report
+</div>
+<table class="table">
+<thead>
+<tr>
+<th>Order-No</th>
+<th>Slip-No</th>
+<th>Issue-Date</th>
+<th>Shift</th>
+<th colspan="2">Action</th>
+</tr>
+</thead>
+<tbody>
+<ul id = "labour" >
+<% @production_report.each do |i| %>
+<tr>
+<td><%= i.order_no%></td>
+<td><%= i.issue_slip_no%></td>
+<td><%= i.issue_date%></td>
+<td><%= i.shift%></td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Remove', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'delete_trashProduction', :id => i.id }%>
+</td>
+
+<td><center><%= link_to  users_trash_showProduction_path(:id => i.id),class: "btn btn-default",:title => 'Show', :onclick => 'return openPopup(this);', :rel => 'tooltip' do%><i class="fa fa-eye"></i><%end%>
+</center></td>
+
+<% if false %>
+
+<td><%= link_to image_tag("/assets/restore.png", height: '20', width: '20',:class=>"img-circle",:title => 'Restore', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'restore_trashProduction', :id => i.id }%>
+</td>
+
+<% end %>
+</tr>
+<%end%>
+</ul>
+</tbody>
+</table>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+    <%= will_paginate @production_report, :container => false %>
+</div>
+</div>
+</div>
+</div>
+
+

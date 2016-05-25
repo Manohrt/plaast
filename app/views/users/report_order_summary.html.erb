@@ -1,0 +1,54 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Order Summary Report
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+
+<%= form_for :order_summary, :url=>{ :controller => "users", :action => "order_summary_report",:method => "get"} do |i| %>
+<center><table>
+	<tr style=border-color:#252525>
+<td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info", :onclick=> "return validate()"%></td>
+</tr>
+</table>
+</center>
+</div>
+<br><br>
+
+<table class="table">
+	<tr>
+	<td><input type="checkbox" id="selectall" onClick="selectAll(this)" />  Select All</td></tr>
+
+<tr>
+<td><input type="checkbox" name=subject[] value="order_no/Order Number" >  Order No</td>
+<td><input type="checkbox" name=subject[] value="order_date/Order Date" >  Order Date</td>
+<td><input type="checkbox" name=subject[] value="scheduled_date/Scheduled Date" >  Scheduled Date</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="party/Party" >  Party</td>
+<td><input type="checkbox" name=subject[] value="goods_finished/Goods Finished" >  Goods Finished</td>
+<td><input type="checkbox" name=subject[] value="nos/Nos" >  Nos</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="ra_material/Raw Material" >  Raw Material</td>
+<td><input type="checkbox" name=subject[] value="rm_qty_per_item/RM Qty per Item" >  RM Qty per Item</td>
+<td><input type="checkbox" name=subject[] value="chemicals/Chemicals" >  Colouring Agent</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="color_std/Color Std" >  Color Std</td>
+<td><input type="checkbox" name=subject[] value="chemical_qty/Chemical Qty" >  Colouring Agent Qty</td>
+<td><input type="checkbox" name=subject[] value="total_kgs/Total Kgs" >  Total Kgs</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="total_rm_kgs/Total RM Kgs" >  Total RM Kgs</td> 
+<td><input type="checkbox" name=subject[] value="reground_material/Reground Material" >  Reground Material</td>
+</tr>
+</table>
+<% end %>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finished_goods_name: MyString
+  total_no_of_items_produced: MyString
+  weight_per_item: MyString
+  total_weight_consumed: MyString
+  standard_weight: MyString
+  no_of_kgs_used_for_production: MyString
+  variance: MyString
+  rejected_nos: MyString
+  weight_per_item: MyString
+  rejected_nos_wt_for_re_grounding: MyString
+  lumps: MyString
+
+two:
+  finished_goods_name: MyString
+  total_no_of_items_produced: MyString
+  weight_per_item: MyString
+  total_weight_consumed: MyString
+  standard_weight: MyString
+  no_of_kgs_used_for_production: MyString
+  variance: MyString
+  rejected_nos: MyString
+  weight_per_item: MyString
+  rejected_nos_wt_for_re_grounding: MyString
+  lumps: MyString

@@ -1,0 +1,167 @@
+<script>
+    function div() {
+      var txtFrtNumberValue = document.getElementById('t1').value;
+      var txtSecNumberValue = document.getElementById('t2').value;
+      var txtForNumberValue = document.getElementById('t4').value;
+      var txtFiveNumberValue = document.getElementById('t5').value;
+       var txtSixNumberValue = document.getElementById('t6').value;
+      var txtSevNumberValue = document.getElementById('t7').value;
+      var txtEtNumberValue = document.getElementById('t8').value;
+      var txtElNumberValue = document.getElementById('t11').value;
+
+       var result = parseFloat(txtFrtNumberValue) * parseFloat(txtSecNumberValue);
+       var result1 =(3600 / parseFloat(txtForNumberValue)) * parseFloat(txtSixNumberValue) * parseFloat(txtSevNumberValue);
+        var result2 = parseFloat(txtFiveNumberValue) - parseFloat(txtEtNumberValue);
+        var result3 = (parseFloat(txtEtNumberValue) / parseFloat(txtFiveNumberValue) * 100);
+        var result4 = parseFloat(txtElNumberValue) * 60;
+      if (!isNaN(result))  {
+         document.getElementById('t3').value = (result.toFixed(3));
+     }
+        if (!isNaN(result1))  {
+         document.getElementById('t5').value = (result1.toFixed(4));
+     }
+       if (!isNaN(result2))  {
+         document.getElementById('t9').value = (result2.toFixed(4));
+     }
+       if (!isNaN(result3))  {
+         document.getElementById('t10').value = (result3.toFixed(4));
+     }
+       if (!isNaN(result4))  {
+         document.getElementById('t12').value = (result4);
+     }
+}
+</script>
+
+ <div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Labour
+  <div class="add"><%= link_to users_index_labour_path, class: "btn btn-default", :title => 'List', :rel =>'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+<br>
+<div clas="row">
+<div class="col-md-4">
+
+<div style="width: 79%;">
+<table class="table">
+<tbody>
+
+<%= form_for @issue, :url=>{:action=>"update_issues", :id => @issue } do |i|%>
+
+<tr><td ><%= i.label :order_no,"Order No"%></td></tr>
+<tr><td><%= i.number_field :order_no,:style=>"background:#1B5C90;color:#fff;",:autofocus=>true,:required => true,:readonly => true%></td></tr>
+<tr><td><%= i.label :order_date," Order Date",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :order_date,:style=>"background:#1B5C90;color:#fff;",:required => true,:id=>"txtFrom"%></td></tr>
+<tr><td ><%= i.label :party,"Party"%></td></tr>
+<tr><td ><%= i.text_field :party,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true %></td></tr>
+<tr><td ><%= i.label :issue_slip_no,"Issue Slip No"%></td></tr>
+<tr><td ><%= i.number_field :issue_slip_no,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true%></td></tr>
+<tr><td><%= i.label :issue_date," Issue Date",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :issue_date,:style=>"background:#1B5C90;color:#fff;",:required => true,:id=>"txtTo" %></td></tr>
+<tr><td ><%= i.label :shift,"Shift"%></td></tr>
+<tr><td ><%= i.text_field :shift,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true%></td></tr>
+
+<%end%>
+
+<%= form_for :production_report , :url=>{:controller=>"users",:action=>"update_productionReport" }  do |i|%>
+
+<tr><td><%= i.label  :finished_goods_name,"finished goods name"%></td></tr>
+<tr><td><%= i.text_field :finished_goods_name,:style=>"background:#1B5C90;color:#fff;",:readonly => true%></td></tr>
+<tr><td ><%= i.label :total_no_of_items_produced,"Total No of Item Produced"%></td></tr>
+<tr><td ><%= i.number_field :total_no_of_items_produced,:step => "0.0001",:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true%></td></tr>
+<tr><td ><%= i.label :weight_per_item,"Weight Per Item Cavity"%></td></tr>
+<tr><td ><%= i.number_field :weight_per_item,:style=>"background:#1B5C90;color:#fff;",:required => true,:step => "0.0001",:readonly => true%></td></tr>
+
+<%end%>
+</tbody>
+</table>
+</div>
+</div>
+
+<%= form_for @labour, :url=>{:controller=>"users", :action => "update_labour"} do |i|%>
+
+<div class="col-md-4">
+<table class="table">
+	<tbody>
+<tr><td ><%= i.label :machine_no,"Machine No"%></td></tr>
+<tr><td ><%= i.text_field :machine_no,:value=>@issue.machine_no,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly=>"true"%></td></tr>
+<tr><td ><%= i.label :mould,"Mould Number"%></td></tr>
+<tr><td ><%= i.text_field :mould,:style=>"background:#1B5C90;color:#fff;",:readonly=>"true" %></td></tr>
+<tr><td ><%= i.label :no_of_persons,"No of Persons"%></td></tr>
+<tr><td ><%= i.number_field :no_of_persons,:step => "0.0001",:require=>true,:id=>"t1",:onkeyup=>"div()",:autofocus=>true%></td></tr>
+<tr><td ><%= i.label :other_work,"OtherWork"%></td></tr>
+<tr><td ><%= i.text_field :other_work,:required => true%></td></tr>
+<tr><td ><%= i.label :nature,"Nature of Work"%></td></tr>
+<tr><td><%= i.collection_select(:nature, NatureOfWork.select(:nature_of_work_list).order('nature_of_work_list ASC').uniq, :nature_of_work_list, :nature_of_work_list, :prompt=> "--select--") %></td></tr>
+<tr><td ><%= i.label :rate_per_person,"Rate Per Person"%></td></tr>
+<tr><td ><%= i.number_field :rate_per_person,:step => "0.0001",:require=>true,:id=>"t2",:onkeyup=>"div()"%></td></tr>
+<tr><td ><%= i.label :cost_per_shift,"Cost per Shift"%></td></tr>
+<tr><td ><%= i.number_field :cost_per_shift,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"t3",:onkeyup=>"div()",:readonly => true%></td></tr>
+<tr><td ><%= i.label :no_of_cavity,"No of Cavity"%></td></tr>
+<tr><td ><%= i.number_field :no_of_cavity,:step => "0.0001",:require=>true,:id=>"t6",:onkeyup=>"div()"%></td></tr>
+<tr><td ><%= i.label :cycle_time,"Cycle Time"%></td></tr>
+<tr><td ><%= i.number_field :cycle_time,:step => "0.0001",:require=>true,:id=>"t4",:onkeyup=>"div()"%></td></tr>
+<tr><td ><%= i.label :pro_time,"Production Cycle Time"%></td></tr>
+<tr><td ><%= i.number_field :pro_time,:step => "0.0001",:required=>true,:id=>"t4",:onkeyup=>"div()"%></td></tr>
+<tr><td ><%= i.label :working_hrs,"Working Hours"%></td></tr>
+<tr><td ><%= i.number_field :working_hrs,:step => "0.0001",:require=>true,:id=>"t7",:onkeyup=>"div()"%></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="col-md-4">
+<table class="table">
+	<tbody>
+<tr><td ><%= i.label :expected_production,"Expected Production"%></td></tr>
+<tr><td ><%= i.number_field :expected_production,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"t5",:onkeyup=>"div()",:readonly => true%></td></tr>
+<tr><td ><%= i.label :total_no_of_items_produced,"Total No of Item Produced"%></td></tr>
+<tr><td ><%= i.number_field :total_no_of_items_produced,:style=>"background:#1B5C90;color:#fff;",:value=>@production_report.total_no_of_items_produced.to_f.round(4),:id=>"t8",:onkeyup=>"div()",:readonly=>"true"%></td></tr>
+<tr><td ><%= i.label :difference,"Difference"%></td></tr>
+<tr><td><%= i.number_field :difference,:style=>"background:#1B5C90;color:#fff;",:step=>"0.0001",:id=>"t9",:onkeyup=>"div()",:readonly => true %></td></tr>
+<tr><td ><%= i.label :efficiency,"Efficiency in %"%></td></tr>
+<tr><td ><%= i.number_field :efficiency,:style=>"background:#1B5C90;color:#fff;",:required => true,:step=>"0.0001",:id=>"t10",:onkeyup=>"div()",:readonly => true%></td></tr>
+<tr><td ><%= i.label :no_of_hrs_idle,"No of Hrs IDLE Time"%></td></tr>
+<tr><td ><%= i.number_field :no_of_hrs_idle,:required => true,:step=>"0.0001",:id=>"t11",:onkeyup=>"div()"%></td></tr>
+<tr><td ><%= i.label :no_of_mins_idle,"No of Minutes IDLE Time"%></td></tr>
+<tr><td ><%= i.number_field :no_of_mins_idle,:style=>"background:#1B5C90;color:#fff;",:required => true,:step=>"0.0001",:id=>"t12",:onkeyup=>"div()",:readonly => true%></td></tr>
+<tr><td ><%= i.label :reasons_for_idle,"Reasons for IDLE Time"%></td></tr>
+<tr><td ><%= i.collection_select(:reasons_for_idle, ReasonForIdleTime.select(:reason_for_idle_time_list).order('reason_for_idle_time_list ASC').uniq, :reason_for_idle_time_list, :reason_for_idle_time_list,:prompt=> "--select--") %></td></tr>
+<tr><td ><%= i.label :remarks,"Remarks"%></td></tr>
+<tr><td ><%= i.text_field :remarks,:value=>"--"%></td></tr>
+<!--tr><td ><!%= i.label :spares_name,"Spares(Name)"%></td></tr>
+<tr><td ><!%= i.text_field :spares_name%></td></tr>
+<tr><td ><!%= i.label :spares_cost,"Spares(Cost)"%></td></tr>
+<tr><td ><!%= i.text_field :spares_cost%></td></tr-->
+<tr><td ><%= i.label :supervisor_name,"Supervisor Name"%></td></tr>
+<tr><td ><%= i.collection_select(:supervisor_name, NameOfSupervisor.select(:name_of_supervisor_list).order('name_of_supervisor_list ASC').uniq, :name_of_supervisor_list, :name_of_supervisor_list,:prompt=> "--select--") %></td></tr>
+<%= i.hidden_field :issue_id,:value=> @issue.id %>
+<%= i.hidden_field :updated_by,:value => @user %>
+</tbody>
+</table>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Update",:class=>"btn btn-info btn-sm"%></td></tr>
+</table>
+</center>
+</div>
+</div>
+
+<%end%>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

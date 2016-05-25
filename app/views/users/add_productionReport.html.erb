@@ -1,0 +1,136 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+        Production Report
+         <div class="add">
+         	<%= link_to users_index_productionReport_path, class: "btn btn-default",:title => 'List of Production Reports', :rel => 'tooltip' do %>
+<i class="fa fa-list"></i><%end%>
+	</div>
+</div>
+<div class="body-content">
+<div class="table-container">
+<%= form_for :issue , :url=>{:controller=>"users",:action=>"update_issues" }  do |i|%>
+<!--form_for @production_report, :url=>{:controller=>"users", :action => "get_production"} do |i|%-->
+<!--%= i.fields_for :issue, :url=>{:controller=>"users",:action=>"update_issues" } do |i|%-->
+<div class="row">
+<div class="col-md-6">
+	<div style="width: 50%; margin-left: 8%;">
+<table class="table">
+<tr><td><%= i.label :order_no,"Order No" %></td></tr>
+<tr><td><%= i.number_field :order_no,:style=>"background:#1B5C90;color:#fff;",:required => true,:autofocus=>true,:readonly => true %></td></tr>
+<tr><td><%= i.label :order_date,"Order Date" %></td></tr>
+<tr><td><%= i.text_field :order_date,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true %></td></tr>
+<tr><td><%= i.label :party,"Party" %></td></tr>
+<tr><td><%= i.text_field :party,:style=>"background:#1B5C90;color:#fff;",:readonly => true%></td></tr>
+<tr><td><%= i.label :issue_slip_no,"Issue Slip No" %></td></tr>
+<tr><td><%= i.number_field :issue_slip_no,:style=>"background:#1B5C90;color:#fff;",:readonly=> true %></td></tr>
+<tr><td><%= i.label :issue_date," Issue Date ",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :issue_date,:style=>"background:#1B5C90;color:#fff;",:readonly=> true %></td></tr>
+<tr><td><%= i.label :shift,"Shift" %></td></tr>
+<tr><td><%= i.text_field :shift,:style=>"background:#1B5C90;color:#fff;",:readonly=>true%></td></tr>
+<tr><td><%= i.label :machine_no,"Machine Name" %></td></tr>
+<tr><td><%= i.text_field :machine_no,:style=>"background:#1B5C90;color:#fff;",:readonly=>true%>
+<tr><td><%= i.label :rm_issues,"Raw Material Issues"%></td></tr>
+<tr><td><%= i.text_field :rm_issues,:style=>"background:#1B5C90;color:#fff;",:readonly => true %></td></tr>
+<tr><td><%= i.label :chemicals_type,"Type of Colouring Agent" %></td></tr>
+<tr><td><%= i.text_field :chemicals_type,:style=>"background:#1B5C90;color:#fff;",:readonly => true%>
+</td></tr>
+<tr><td><%= i.label :chemicals,"Colour Issues (Colouring Agent)" %></td></tr>
+<tr><td><%= i.text_field :chemicals,:style=>"background:#1B5C90;color:#fff;",:readonly=>true%></td></tr>
+<tr><td><%= i.label :rg_material_issues,"Re-ground Material issues(RG)" %></td></tr>
+<tr><td><%= i.text_field :rg_material_issues,:style=>"background:#1B5C90;color:#fff;",:readonly => true %></td></tr>
+<tr><td><%= i.label :bush_mat_issues,"Bush Material issues" %></td></tr>
+<tr><td><%= i.text_field :bush_mat_issues,:style=>"background:#1B5C90;color:#fff;",:required => true,:step => "0.0001",:readonly=>true %></td></tr>
+<tr><td><%= i.label :qty_after_rg,"Qty after RG" %></td></tr>
+<tr><td><%= i.number_field :qty_after_rg,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:readonly=>true %></td></tr>
+<tr><td><%= i.label :consolidated_cost,"Consolidated Cost" %></td></tr>
+<tr><td><%= i.number_field :consolidated_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:readonly=>true %></td></tr>
+<%= i.hidden_field :rm_mat_qty,:step => "0.001" %>
+<%= i.hidden_field :chem_qty,:step => "0.001" %>
+<%= i.hidden_field :rg_qty_issued,:step => "0.001" %>
+<%= i.hidden_field :bush_qty_issued,:step => "0.001" %>
+<%= i.hidden_field :ferul_qty_issued,:step => "0.001"%>
+<%@tot= @issue.rm_mat_qty.to_f +  @issue.chem_qty.to_f + @issue.rg_qty_issued.to_f + @issue.bush_qty_issued.to_f + @issue.ferul_qty_issued.to_f%>
+
+<%= i.hidden_field :total_iss,:value=>@tot,:step => "any",:id=>"txt14",:style=>"background:#1B5C90;color:#fff;",:readonly=>true%>
+<%end%>
+<%= form_for :production_report, :url=>{:controller=>"users", :action => "get_production"} do |i|%>
+<tr><td><%= i.label  :finished_goods_name,"Finished Goods Name"%></td></tr>
+<tr><td><%= i.text_field :finished_goods_name,:value=>@order_summary[0].goods_finished,:style=>"background:#1B5C90;color:#fff;",:readonly => true%></td></tr>
+<tr><td><%= i.label  :total_no_of_items_produced,"Total no of Item Produced"%></td></tr>
+<tr><td><%= i.number_field :total_no_of_items_produced,:step => "any",:id=>"txt1",:onkeyup=>"man()",:required => true  %></td></tr>
+
+
+</table>
+</div>
+</div>
+
+<div class="col-md-6">
+	<div style="padding: 8px 22px 20px 0px; width:50%">
+<table class="table">
+<%= i.hidden_field :order_no,:value=>@issue.order_no %>
+<%= i.hidden_field :order_date,:value=>@issue.order_date %>
+<%= i.hidden_field :party,:value=>@issue.party %>
+<%= i.hidden_field :issue_slip_no,:value=> @issue.issue_slip_no %>
+<%= i.hidden_field :issue_date,:value=>@issue.issue_date %>
+<%= i.hidden_field :shift,:value=> @issue.shift %>
+<%= i.hidden_field :machine_no,:value=>@issue.machine_no%>
+<%= i.hidden_field :consolidated_cost,:value=>@issue.consolidated_cost%>
+<!--tr><td><!%= i.collection_select(:finished_goods_name, FinishedGoodsName.select(:finished_goods_name_list).uniq, :finished_goods_name_list, :finished_goods_name_list, {:prompt=>"select"},{:required => true}) %></td></tr-->
+<tr><td><%= i.label  :weight_per_item,"Weight Per Item at Production" %></td></tr>
+<tr><td><%= i.number_field :weight_per_item,:step => "0.0001",:id=>"txt2",:onkeyup=>"man()",:required => true%></td></tr>
+<tr><td><%= i.label  :total_weight_consumed,"Total Weight Consumed" %></td></tr>
+<tr><td><%= i.number_field :total_weight_consumed,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt4",:onkeyup=>"man()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :standard_weight,"Component Standard Weight" %></td></tr>
+<tr><td><%= i.number_field :standard_weight,:step => "0.0001",:id=>"txt3",:value=>@order_summary[0].rm_qty_per_item,:onkeyup=>"man()",:readonly=>true,:style=>"background:#1B5C90;color:#fff;" %></td></tr>
+<tr><td><%= i.label  :no_of_kgs_used_for_production,"No of kg Used for Production" %></td></tr>
+<tr><td><%= i.number_field :no_of_kgs_used_for_production,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt5",:onkeyup=>"man()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label  :variance,"Variance" %></td></tr>
+<tr><td><%= i.number_field :variance,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt6",:onkeyup=>"man()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label  :rejected_nos,"Rejected No" %></td></tr>
+<tr><td><%= i.number_field :rejected_nos,:required => true,:id=>"txt8",:onkeyup=>"man()",:required => true %></td></tr>
+<tr><td><%= i.label  :reason_rejection,"Rejection Reason" %></td></tr>
+<tr><td><%= i.collection_select(:reason_rejection, RejectionReason.select(:rejection_reason_list).uniq, :rejection_reason_list, :rejection_reason_list, {:prompt=>"select"})%></td></tr>
+<tr><td><%= i.label  :action_taken,"Action Taken"%></td></tr>
+<tr><td><%= i.text_area :action_taken, cols: 50, rows: 30  %></td></tr>
+<tr><td><%= i.label :weight_per_item, "Weight Per Item" %></td></tr>
+<tr><td><%= i.number_field :weight_per_item,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt7",:onkeyup=>"man()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :rejected_nos_wt_for_re_grounding, "Rejected nos wt for Re Grounding"%></td></tr>
+<tr><td><%= i.number_field :rejected_nos_wt_for_re_grounding,:style=>"background:#1B5C90;color:#fff;",:step => "any",:id=>"txt9",:onkeyup=>"man()",:required => true %></td></tr>
+<tr><td><%= i.label :lumps,"Lumps" %></td></tr>
+<tr><td><%= i.number_field :lumps,:value=>@issue.generated,:id=>"txt15",:step => "0.0001",:onkeyup=>"man",:style=>"background:#1B5C90;color:#fff;",:readonly => true %></td></tr>
+<tr><td><%= i.label :realization_in_wt,"Realization in Wt" %></td></tr>
+<tr><td><%= i.number_field :realization_in_wt,:id=>"txt16",:step => "0.0001",:onkeyup=>"man",:readonly=>true,:style=>"background:#1B5C90;color:#fff;" %></td></tr>
+<tr><td><%= i.label :realization_in_per,"Realization (in %)" %></td></tr>
+<tr><td><%= i.number_field :realization_in_per,:id=>"txt17",:step => "0.0001",:onkeyup=>"man",:readonly=>true,:style=>"background:#1B5C90;color:#fff;" %></td></tr>
+<tr><td><%= i.label :cost_per_unit,"Cost/Unit" %></td></tr>
+<tr><td><%= i.number_field :cost_per_unit,:value=>@cost.cost_per_unit,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt11",:onkeyup=>"man()",:readonly=>"true" %></td></tr>
+<tr><td><%= i.label :power_unit_reading,"Power Unit Reading" %></td></tr>
+<tr><td><%= i.number_field :power_unit_reading ,:step => "0.0001",:id=>"txt10",:onkeyup=>"man()"%></td></tr>
+<tr><td><%= i.label :power_unit_cost_kg,"Power Unit Cost/Kg" %></td></tr>
+<tr><td><%= i.number_field :power_unit_cost_kg,:step => "0.0001",:style=>"background:#1B5C90;color:#fff;",:id=>"txt12",:onkeyup=>"man()",:readonly=>"true" %></td></tr>
+<tr><td><%= i.label :power_unit_cost_piece,"Power Unit Cost/Piece" %></td></tr>
+<tr><td><%= i.number_field :power_unit_cost_piece,:step => "0.0001",:style=>"background:#1B5C90;color:#fff;",:id=>"txt13",:onkeyup=>"man()",:readonly=>"true" %></td></tr>
+<%= i.hidden_field :created_by,:value => @user %>
+<%= i.hidden_field :issue_id,:value=> @issue.id %>
+<%= i.hidden_field :date,:value=> @issue.issue_date %>
+<%= i.hidden_field :party,:value=> @issue.party %>
+</table>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><div class="pl"><%= i.submit "Submit",:class=>"btn btn-info btn-sm"%></div>
+<%end%>
+</td></tr>
+</table>
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>

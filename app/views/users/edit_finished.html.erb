@@ -1,0 +1,82 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Finished
+  <div class="add"><%= link_to users_index_finished_path, class: "btn btn-default", :title => 'List', :rel =>'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+<br>
+<div clas="row">
+<div class="col-md-4">
+	<div style="width: 79%;">
+<table class="table">
+<tbody>
+
+<%= form_for :production_report , :url=>{:controller=>"users",:action=>"update_productionReport" }  do |i|%>
+
+<tr><td><%= i.label  :order_no,"Order No" %></td></tr>
+<tr><td><%= i.text_field :order_no,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@production_report[0].order_no%></td></tr>
+<tr><td><%= i.label  :order_date,"Order Date" %></td></tr>
+<tr><td><%= i.text_field :order_date,:style=>"background:#1B5C90;color:#fff;",:id=>"txtFrom",:value=>@production_report[0].order_date,:readonly=> true %></td></tr>
+<tr><td><%= i.label :party,"Party" %></td></tr>
+<tr><td><%= i.text_field :party,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@production_report[0].party%></td></tr>
+<tr><td><%= i.label  :finished_goods_name,"Finished Goods Name" %></td></tr>
+<tr><td><%= i.text_field :finished_goods_name,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:value=>@production_report[0].finished_goods_name%></td></tr>
+<tr><td><%= i.label  :total_no_of_items_produced,"Total No of Items Produced" %></td></tr>
+<tr><td><%= i.text_field :total_no_of_items_produced,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:value=>@production_report[0].total_no_of_items_produced %></td></tr>
+<tr><td><%= i.label  :rejected_nos,"Rejected Nos" %></td></tr>
+<tr><td><%= i.text_field :rejected_nos,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:value=>@production_report[0].rejected_nos %></td></tr>
+<tr><td><%= i.label :consolidated_cost,"Material Cost" %></td></tr>
+<tr><td><%= i.text_field :consolidated_cost,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@issue[0].consolidated_cost%></td></tr>
+<% end %>
+
+</tbody>
+</table>
+</div>
+</div>
+
+	<%= form_for @finished, :url=>{:controller=>"users",:action=>"update_finished",:id => @finished.id}  do |i|%>
+
+<div class="col-md-6">
+<table class="table">
+
+<%= form_for :labour , :url=>{:controller=>"users",:action=>"update_labour" }  do |i|%>
+<tr><td><%= i.label  :cost_per_shift,"Labour Cost" %></td></tr>
+<tr><td><%= i.text_field :cost_per_shift,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@labour[0].cost_per_shift%></td></tr>
+
+<%end%>
+
+<tr><td><%= i.label  :nett_available,"Nett Available" %></td></tr>
+<tr><td><%= i.text_field :nett_available,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:required => true,:readonly=> true%></td></tr>
+<tr><td><%= i.label  :freight,"Freight" %></td></tr>
+<tr><td><%= i.text_field :freight,:required=> true %></td></tr>
+<tr><td><%= i.label :overheads,"Overheads" %></td></tr>
+<tr><td><%= i.text_field :overheads,:required => true %></td></tr>
+<tr><td><%= i.label  :packing_materials,"Packing Materials" %></td></tr>
+<tr><td><%= i.text_field :packing_materials,:required=> true%></td></tr>
+<%= i.hidden_field :updated_by,:value=> @user %>
+<%= i.hidden_field :production_report_id,:value=> @production_report[0].id %>
+
+</table>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Update",:class=>"btn btn-info btn-sm"%></td></tr>
+</table>
+</center>
+</div>
+</div>
+
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

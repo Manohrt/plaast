@@ -1,0 +1,61 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Return
+  <div class="add"><%= link_to users_index_return_path,:class=> "btn btn-default",:title => 'List of Returns',:rel => 'tooltip' do%><i class="fa fa-List"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+
+<div class="row">
+<div class="col-md-6">
+	<div style="width: 79%; margin-left: 8%;">
+<table class="table">
+<%= form_for :issue , :url=>{:controller=>"users",:action=>"update_issues" }  do |i|%>
+<tr><td><%= i.label :order_no,"Order No" %></td></tr>
+<tr><td><%= i.number_field :order_no,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly => true %></td></tr>
+<tr><td><%= i.label :issue_date," Issue Date ",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :issue_date,:style=>"background:#1B5C90;color:#fff;",:id=>"txtTo",:readonly=> true %></td></tr>
+<tr><td><%= i.label :rm_qty_return,"Raw Material Qty Return" %></td></tr>
+<tr><td><%= i.number_field :rm_qty_return,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt4",:onkeyup=>"sub()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :rm_issues,"Raw Material Issues"%></td></tr>
+<tr><td><%= i.text_field :rm_issues,:style=>"background:#1B5C90;color:#fff;",:required => true,:readonly=> true %></td></tr>
+</table>
+</div>
+</div>
+
+<div class="col-md-6">
+	<div style="padding: 8px 22px 20px 18px; width:79%">
+<table class="table">
+<tr><td><%= i.label :chem_qty_return,"Chemical Qty Return" %></td></tr>
+<tr><td><%= i.number_field :chem_qty_return,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt9",:onkeyup=>"sub()",:required => true,:readonly=> true %></td></tr>
+<tr><td><%= i.label :rg_rate,"Re-Ground Rate per Kg/Nos" %></td></tr>
+<tr><td><%= i.number_field :rg_rate,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt16",:onkeyup=>"sub()",:required => true,:readonly=> true %></td></tr>
+<%end%>
+<%= form_for :ireturn , :url=>{:controller=>"users",:action=>"get_return" }  do |i|%>
+<tr><td><%= i.label :grn_no,"Grn No" %></td></tr>
+<tr><td><%= i.number_field :grn_no,:required => true,:autofocus=>true %></td></tr>
+<%= i.hidden_field :issue_id,:value => @issue.id %>
+<%= i.hidden_field :order_no,:value=> @issue.order_no %>
+<%= i.hidden_field :issue_date,:value=> @issue.issue_date %>
+<%= i.hidden_field :issue_slip_no,:value=> @issue.issue_slip_no %>
+<%= i.hidden_field :shift,:value=> @issue.shift %>
+<%= i.hidden_field :created_by,:value=>@user%>
+</table>
+</div></div>
+</div>
+<div class="row">
+<center>
+<table>
+<tr><td><div class="pl"><%= i.submit "Submit",:class=>"btn btn-info btn-sm" %></div></td></tr>
+</table>
+</center>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

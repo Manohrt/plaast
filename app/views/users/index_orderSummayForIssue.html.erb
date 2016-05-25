@@ -1,0 +1,63 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+       Issues - Order Summary     
+        <div class="add">
+		<% if not admin? %>
+		<%= link_to users_index_issues_path, class: "btn btn-default",:title => 'Add' do%>
+		<i class="fa fa-list"></i><%end%>
+		<%end%>
+	</div>
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+     List of Order Summary for Issues</div>
+<table class="table">
+    <thead>
+<tr>
+</tr>
+
+<tr>	
+<th>Sl.No</th>
+<th>Order No</th>
+<th>Party</th>
+<th>Finished Goods</th>
+<th>Colouring Agent</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<% if @order_summary.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+
+<ul id = "orderSummary" >
+<%t=0%>
+<% @order_summary.each do |i| %>
+<%if not Issue.exists?(:shift=>nil)%>
+<%t=t+1%>
+<tr>
+<td><%= t %></td>
+<td><%= i.order_no%></td>
+<td><%= i.party%></td>
+<td><%= i.goods_finished%></td>
+<td><%= i.chemicals%></td>
+<% if not admin? %>
+<td><%= link_to users_add_issues_path(:id => i.id), class: "btn btn-default",:title => 'Add' do%>
+<i class="fa fa-plus"></i><%end%>
+</td>
+<%end%>
+<%end%>
+</tr>
+<%end%>
+<%end%>
+</table>
+</div>
+<div class="digg_pagination" align="right" >
+    <%= will_paginate @order_summary, :container => false %>
+</div>
+
+</div>

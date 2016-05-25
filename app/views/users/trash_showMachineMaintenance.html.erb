@@ -1,0 +1,30 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Machine Maintenance </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_machine_maintenance_path, class:"fa fa-close" %></b></h3>
+<div style="padding-left:50px;width:70%;">
+<table class="table">
+<tr><td>Machine No</td>
+<td><%= @machine_maintenance.mach_no %></td></tr>
+<tr><td>Type of Machine problem</td>
+<td><%= @machine_maintenance.type_of_prob %></td></tr>
+<tr><td><%= Date %></td>
+<td><%=@machine_maintenance.date%></td></tr>
+<tr><td>Spare Name</td>
+<td><%= @machine_maintenance.spare_name %></td></tr>
+<tr><td>Spare Cost</td>
+<td><%= @machine_maintenance.spare_cost %></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>

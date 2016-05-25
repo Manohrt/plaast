@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_no: MyString
+  order_date: MyString
+  scheduled_date: MyString
+  party: MyString
+  goods_finished: MyString
+  nos: MyString
+  ra_material: MyString
+  rm_qty_per_item: MyString
+  chemicals: MyString
+  color_std: MyString
+  chemical_qty: MyString
+  total_kgs: MyString
+  total_rm_kgs: MyString
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  order_no: MyString
+  order_date: MyString
+  scheduled_date: MyString
+  party: MyString
+  goods_finished: MyString
+  nos: MyString
+  ra_material: MyString
+  rm_qty_per_item: MyString
+  chemicals: MyString
+  color_std: MyString
+  chemical_qty: MyString
+  total_kgs: MyString
+  total_rm_kgs: MyString
+  created_by: MyString
+  updated_by: MyString

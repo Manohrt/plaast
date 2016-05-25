@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finished_goods_name_list: MyString
+
+two:
+  finished_goods_name_list: MyString

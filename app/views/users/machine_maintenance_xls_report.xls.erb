@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+        <Row>
+          <Cell><Data ss:Type="String">S.No</Data></Cell>
+          <Cell><Data ss:Type="String">Machine No</Data></Cell>
+          <Cell><Data ss:Type="String">Type of problem</Data></Cell>
+          <Cell><Data ss:Type="String">Date</Data></Cell>
+          <Cell><Data ss:Type="String">Spare name</Data></Cell>
+          <Cell><Data ss:Type="String">Spare cost</Data></Cell>
+        </Row>
+        <%aa=[]%>
+        <%t=0%>
+        <%if $mno!=""%>
+        <% @machine_maintenance.where(:mach_no=>$mno).each do |i| %>
+        <%t=t+1%>
+       <Row>
+        <Cell><Data ss:Type="String"><%= t%></Data></Cell> 
+        <Cell><Data ss:Type="String"><%= i.mach_no%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.type_of_prob%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.date%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.spare_name%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.spare_cost%></Data></Cell>    
+        <%aa<<i.spare_cost.to_f%>  
+      </Row>     
+      <%end%>
+       <%else%>
+        <% @machine_maintenance.each do |i| %>
+        <%t=t+1%>
+       <Row>
+        <Cell><Data ss:Type="String"><%= t%></Data></Cell> 
+        <Cell><Data ss:Type="String"><%= i.mach_no%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.type_of_prob%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.date%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.spare_name%></Data></Cell>
+        <Cell><Data ss:Type="String"><%= i.spare_cost%></Data></Cell>        
+        <%aa<<i.spare_cost.to_f%>
+      </Row>       
+      <%end%>
+      <%end%>
+      <%aa=aa.inject{|sum,i|sum+i}%>
+      <Row>
+        <Cell><Data ss:Type="String"></Data></Cell> 
+        <Cell><Data ss:Type="String"></Data></Cell> 
+        <Cell><Data ss:Type="String"></Data></Cell> 
+        <Cell><Data ss:Type="String"></Data></Cell> 
+        <Cell><Data ss:Type="String">Total</Data></Cell> 
+        <Cell><Data ss:Type="String"><%= aa%></Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
+

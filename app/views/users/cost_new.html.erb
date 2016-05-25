@@ -1,0 +1,43 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="set">
+<div class="body-container">
+<div class="body-header">
+ Power Cost per unit
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Power Cost per unit
+</div>
+<table class="table">
+    <thead>
+<tr>
+<th>Cost per unit</th>
+<th> Action</th>
+</tr>
+</thead>
+
+
+<tbody>
+
+<%= form_for([@cost], validate: true, :url=>{:controller=>"users", :action => "update_cost"}) do |i|%>
+
+<tr class="odd"><td><%=i.text_field :cost_per_unit,:required => true%></td>
+<td><%= i.submit "Update",:class=>"btn btn-info"%></td></tr>
+<%end%>
+
+
+
+
+<tr class="odd"><td><div class = "fot"> Old Cost &nbsp; => &nbsp; <%= @cost1.cost_per_unit %></div></td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>            

@@ -1,0 +1,37 @@
+<div class="col-md-9">
+<%if admin?%>
+<div class="add"><%= link_to users_rate_per_kgs_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h4>Rate per Kgs Report</h4>
+<div class="table striped custab">
+<table class="table">
+<th>S.No</th>
+<th>Finished goods Name</th>
+<th>Total No of kgs Processed</th>
+<th>Total Cost</th>
+<th>Rate per kgs</th>
+<%t=0%>
+<%$rpk = @arr.sort_by{|i| i[1].to_i}.reverse%>
+<% $rpk.each do |j| %>
+<%t=t+1%>
+<tr>
+<td><%= t%>
+<td><%=j[0]%></td>
+<td><%=j[1].to_f.round(2)%></td>
+<td><%=j[2].to_f.round(2)%></td>
+<td><%=j[3].to_f.round(2)%></td>
+</tr>
+<%end%>
+<tr>
+<td></td>
+<th>Total</th>
+<td><%=@total.to_f%></td>
+<td><%=@total1.to_f.round(2)%></td>
+<td><%=@total2.to_f.round(2)%></td>
+<%$rpkt1,$rpkt2,$rpkt3=@total,@total1,@total2%>
+</tr>
+</table>
+</div>
+
+

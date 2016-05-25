@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+        <Row>
+        <Cell><Data ss:Type="String">S.No</Data></Cell>  
+        <Cell><Data ss:Type="String">Return GRN No</Data></Cell>
+        <Cell><Data ss:Type="String">Order No </Data></Cell>
+        <Cell><Data ss:Type="String">Item</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">RM Qty Return</Data></Cell>
+        <Cell><Data ss:Type="String">Coloring Agent Qty Return</Data></Cell>
+        <Cell><Data ss:Type="String">RG Rate Per KG</Data></Cell>
+        </Row>
+        <%t=0%>
+       <%@issue.where(:issue_date => $rn..$nr).each do|i|%>
+       <%t=t+1%>
+       <%if Ireturn.exists?(:issue_id=>i.id)%>
+        <Row>
+	<%@is1=Issue.where(:id=>i.id)%>
+        <%@pr1=Ireturn.where(:issue_id=>i.id)%>
+        <Cell><Data ss:Type="String"><%= t%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @pr1.maximum(:grn_no)%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:order_no)%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:rm_issues)%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:issue_date)%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:rm_qty_return)%> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:chem_qty_return) %> </Data></Cell>
+        <Cell><Data ss:Type="String"><%= @is1.maximum(:rg_rate)%> </Data></Cell>
+      </Row>
+       <%end%>
+      <%end%>
+
+    </Table>
+  </Worksheet>
+</Workbook>

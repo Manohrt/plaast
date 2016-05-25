@@ -1,0 +1,41 @@
+<div class="bod">
+<%if admin?%>
+<div class="add"><%= link_to users_party_production_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h4>Production Report</h4>
+<div class="table-striped custab">
+<table class="table">
+<th>Rank</th>
+<th>Party</th>
+<th>No of kgs used production</th>
+<th>Percentage</th>
+<th>Pending production</th>
+<%t=0%>
+<%@abb = 0%>
+<%$sas=@aass.sort_by{|i| i[1].to_f}.reverse%>
+<%$sas.each do |j|%>
+<%t=t+1%>
+
+<tr>
+<td><%=t%></td>
+<td><%=j[0]%></td>
+<td><%=j[1].round(2)%></td>
+<%@ab=(j[1].to_i/@total.to_f)*100%>
+<td><%=(@ab).round(2)%></td>
+<td><%=j[2].round(2)%></td>
+<td><%=j[3]%></td>
+<% @abb = @abb + @ab %>
+</tr>
+<%end%>
+<tr>
+<td></td>
+<th>Total</th>
+<td><%=@total.round(2)%></td>
+<td><%=@abb.round(2)%></td>
+<td><%=@total1.round(2)%></td>
+</tr>
+<%$oo,$too=@total.round(2),@total1.round(2)%>
+</table>
+</div>
+</div>

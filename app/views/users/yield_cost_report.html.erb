@@ -1,0 +1,64 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Yield and Cost
+                     <%if admin? and not @arr.blank?%>
+<div class="add"><%= link_to users_yield_cost_report_xls_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">
+ <thead>
+ <tr>
+<th>Shift</th>
+<th>Machine</th>
+<th>Product name</th>
+<th>Mould</th>
+<th>Raw Material</th>
+<th>Coloring Agent</th>
+<th>Product Weight</th>
+<th>Actual qty</th>
+<th>Rejected qty</th>
+<th>Reground Return</th>
+<th>Wastage Qty</th>
+<th>Wastage %</th>
+<th>Cost per Kg</th>
+<th>Cost Pc</th>
+</tr>
+</thead>
+ 
+<% if @arr.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+<ul id= "Issues">
+
+<% $arr = @arr%>
+<% @arr.each do |i| %>
+
+<tr class="odd">
+<td><%= i[0] %></td>
+<td><%= i[1] %></td>
+<td><%= i[2] %></td>
+<td><%= i[3] %></td>
+<td><%= i[4] %></td>
+<td><%= i[5] %></td>
+<td><%= i[6] %></td>
+<td><%= i[7] %></td>
+<td><%= i[8] %></td>
+<td><%= i[9] %></td>
+<td><%= i[10] %></td>
+<td><%= i[11] %></td>
+<td><%= i[12] %></td>
+<td><%= i[13] %></td>
+</tr>
+
+<% end %>
+</table>
+<%end%>
+</div>
+</div>
+</div>

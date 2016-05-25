@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mach_no: MyString
+  type_of_prob: MyString
+  spare_name: MyString
+  spare_cost: MyString
+
+two:
+  mach_no: MyString
+  type_of_prob: MyString
+  spare_name: MyString
+  spare_cost: MyString

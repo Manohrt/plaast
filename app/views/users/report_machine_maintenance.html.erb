@@ -1,0 +1,27 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Machine Maintenance Report
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+                                  <div class="header">
+<%= form_for :machine_maintenance, :url=>{ :controller => "users", :action => "machine_maintenance_report",:method => "get"} do |i| %>
+<center><table>
+  <tr style=border-color:#252525>
+<td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info"%></td>
+</tr>
+
+<tr style=border-color:#252525><td style=border-color:#252525 ><%= i.label :mach_no,"Machine No" ,:style=>"Color:white;" %></td>
+  <td style=border-color:#252525><%= i.collection_select(:mach_no, MachineUsed.select(:machine_used_list).order('machine_used_list ASC').uniq, :machine_used_list,:machine_used_list,:prompt => "All Machines") %></td></tr>
+</table>
+</center>
+<% end %>
+</div>
+</div>
+</div>

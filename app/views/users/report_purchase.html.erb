@@ -1,0 +1,57 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Purchase Report (Month/Period Wise)
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+
+<%= form_for :purchase, :url=>{ :controller => "users", :action => "purchase_report",:method => "get"} do |i| %>
+<center><table>
+
+<tr style=border-color:#252525>
+<td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info", :onclick=> "return validate()"%></td>
+</tr>
+</table>
+</center>
+</div>
+<br><br>
+
+ <table class="table">
+ 	<tr><td>
+<input type="checkbox" id="selectall" onClick="selectAll(this)" />  Select All
+</td></tr>
+
+<tr>
+<td><input type="checkbox" name=subject[] value="item/Item" >  Item</td>
+<td><input type="checkbox" name=subject[] value="bill_value/Bill Value">  Bill Value</td>
+<td><input type="checkbox" name="subject[]" value="grn_no/GRN Number" >  GRN Number</td>
+<td><input type="checkbox" name="subject[]" value="desc/Description">  Description</td>
+</tr>
+
+<tr>
+<td><input type="checkbox" name="subject[]" value="rate/Rate" >  Rate</td>
+<td><input type="checkbox" name="subject[]" value="date/Date">  Date</td>
+<td><input type="checkbox" name="subject[]" value="debit/Debit" >  Debit</td>
+<td><input type="checkbox" name="subject[]" value="party/Party">  Party</td>
+</tr>
+
+<tr>
+<td><input type="checkbox" name="subject[]" value="qty_accepted/Qty Accepte">  Qty Accepted</td>
+<td><input type="checkbox" name="subject[]" value="reasons/Reasons">  Reasons</td>
+<td><input type="checkbox" name="subject[]" value="trading_material/Trading Material" >  Trading Material</td>
+<td><input type="checkbox" name="subject[]" value="rejected/Rejected">  Rejected</td>
+
+</tr>
+</table>
+<% end %>
+</div>
+</div>
+</div>
+</div>

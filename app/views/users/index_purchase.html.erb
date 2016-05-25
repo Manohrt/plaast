@@ -1,0 +1,102 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+                  <div class="body-header">
+                      Purchase Summary
+                      <div class="add"><br>
+<% if not admin? %>
+<%= link_to users_add_purchase_path, class: "btn btn-default",:title => 'Add', :rel => 'tooltip' do%>
+<i class="fa fa-plus"></i><%end%>
+<%end%>
+						</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+                              <div class="header">
+                                  List of Purchase
+                                </div>
+                                <table class="table">
+    <thead>
+<tr>
+<th>Sl.No</th>
+<th>GRN No</th>
+<th>Party</th>
+<th>Trading Material</th>
+<th>Item</th>
+
+<!--%if factory?%>
+<th>Created by</th>
+<th>Updated by</th>
+<!-th>Created at</th->
+<-th>Updated at</th->
+<-%end%-->
+
+<th colspan="3"><center>Action</center></th>
+</tr>
+</thead>
+
+<% if @purchase.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+
+
+<ul id = "Purchase" >
+<%t=0%>
+<% @purchase.each do |i| %>
+<%t=t+1%>
+<tbody>
+<tr class="odd">
+<td><%= t %></td>
+<td><%= i.grn_no%></td>
+<td><%= i.party%></td>
+<td><%= i.trading_material%></td>
+<td><%= i.item%></td>
+<%if admin?%>
+<td><center><%= link_to users_show_purchase_path(:id => i.id), class: "btn btn-default",:title => 'Show', :rel => 'tooltip' do%>
+<i class="fa fa-eye"></i><%end%></center></td>
+<%end%>
+<%if factory?%>
+<!--td><-%= i.created_by %-></td-->
+<!--td><-%= i.updated_by %-></td-->
+<!--td><div class="fot"><-%= i.created_at.strftime("%Y-%m-%d")%></div></td-->
+<!--td><div class="fot"><-%= i.updated_at.strftime("%Y-%m-%d")%-></div></td-->
+<td><%= link_to users_show_purchase_path(:id => i.id), class: "btn btn-default",:title => 'Show', :rel => 'tooltip' do%>
+<i class="fa fa-eye"></i><%end%></td>
+
+<td><%= link_to users_edit_purchase_path(:id => i.id), class: "btn btn-default",:title => 'Edit', :rel => 'tooltip' do%>
+<i class="fa fa-pencil"></i><%end%>
+</td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'delete_purchase', :id => i.id }%>
+</td>
+
+<%end%>
+
+<% if operator?%>
+<td><center><%= link_to users_show_purchase_path(:id => i.id), class: "btn btn-default",:title => 'Show', :rel => 'tooltip' do%><i class="fa fa-eye"></i><%end%></center></td>
+
+<%unless i.updated_at <(Time.now- 7.day)%>
+<td><%= link_to users_edit_purchase_path(:id => i.id), class: "btn btn-default",:title => 'Edit', :rel => 'tooltip' do%>
+<i class="fa fa-pencil"></i><%end%></td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'delete_purchase', :id => i.id }%>
+</td>
+
+<%end%>
+<%end%>
+</tr>
+<%end%>
+</table>
+<%end%>
+</div>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+<%= will_paginate @purchase, :container => false %>
+</div>
+<!--div class="fott">
+<div class="digg_pagination">
+    <!%= will_paginate @purchase, :container => false %>
+  </div>
+</div-->
+
+</div>

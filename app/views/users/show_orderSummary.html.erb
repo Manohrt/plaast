@@ -1,0 +1,62 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                    Show Order Summary
+                      <div class="add">
+<%= link_to users_index_orderSummary_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                      <div class="table-container">
+<table class="table">
+<tr><td>Order No:</td>
+<td><%= @order_summary.order_no %></td></tr>
+<tr><td> Order Date:</td>
+<td><%= @order_summary.order_date %></td></tr>
+<tr><td>Scheduled Date of Delivery:</td>
+<td><%= @order_summary.scheduled_date %></td></tr>
+<tr><td>Party:</td>
+<td><%= @order_summary.party %></td></tr>
+<tr><td>Mould No:</td>
+<td><%= @order_summary.mould_no %></td></tr>
+<tr><td>Finished Goods Name:</td>
+<td><%= @order_summary.goods_finished %></td></tr>
+<tr><td>Order Qty in Nos:</td>
+<td><%= @order_summary.nos %></td></tr>
+<br><th>Quantity Requirement Plan</th>
+<tr><td>Raw Material Grade:</td>
+<td><%= @order_summary.ra_material %></td></tr>
+<tr><td>Colouring Agent:</td>
+<td><%= @order_summary.chemicals %></td></tr>
+<!--tr><td>Colouring Agent (1):</td>
+<td><-%= @order_summary.chel %></td></tr-->
+<tr><td>Re-Ground Material (RG):</td>
+<td><%= @order_summary. reground_material %></td></tr>
+<tr><td>Component Weight:</td>
+<td><%= @order_summary.rm_qty_per_item.to_f.round(4) %></td></tr>
+<tr><td>Total Kgs:</td>
+<td><%= @order_summary.total_kgs %></td></tr>
+<tr><td>Colour Dosage:</td>
+<td><%= @order_summary.color_std.to_f.round(4) %></td></tr>
+<!--tr><td>Colour Dosage (1):</td>
+<td><-%= @order_summary.color_sd.to_f.round(4) %></td></tr-->
+<tr><td>Colouring Agent Qty:</td>
+<td><%= @order_summary.chemical_qty.to_f.round(4) %></td></tr>
+<tr><td>Total Raw Material Kgs:</td>
+<td><%= @order_summary.total_rm_kgs.to_f.round(4) %></td></tr>
+<tr><td>Created_by:</td>
+<td><%= @order_summary.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @order_summary.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @order_summary.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @order_summary.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,100 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Labour </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_labour_path, class:"fa fa-close" %></b></h3>
+<div class="row">
+<div class="col-md-6">
+<div style="padding-left:20px;width:80%;">
+<table class="table">
+<tr><td>Order No:</td>
+<td><%= @issue.order_no %></td></tr>
+<tr><td>order Date:</td>
+<td><%= @issue.order_date %></td></tr>
+<tr><td>Party:</td>
+<td><%= @issue.party %></td></tr>
+<tr><td>Issue Slip No:</td>
+<td><%= @issue.issue_slip_no %></td></tr>
+<tr><td>Issue Date:</td>
+<td><%= @issue.issue_date %></td></tr>
+<tr><td>Shift:</td>
+<td><%= @issue.shift %></td></tr>
+<tr><td>Finished Goods Name:</td>
+<td><%= @production_report.finished_goods_name %></td></tr>
+<tr><td>Total No of Item Produced:</td>
+<td><%= @production_report.total_no_of_items_produced %></td></tr>
+<tr><td>Weight Per Item Cavity:</td>
+<td><%= @production_report.weight_per_item.to_f.round(2) %></td></tr>
+<tr><td>Machine No:</td>
+<td><%= @issue.machine_no %></td></tr>
+<tr><td>Mould Number:</td>
+<td><%= @labour.mould %></td></tr>
+<tr><td>No of Persons:</td>
+<td><%= @labour.no_of_persons %></tr>
+<tr><td>Other Work:</td>
+<td><%= @labour.other_work %></tr>
+<tr><td>Nature:</td>
+<td><%= @labour.nature %></tr>
+<tr><td>Rate Per Person:</td>
+<td><%= @labour.rate_per_person %></tr>
+<tr><td>Cost Per Shift:</td>
+<td><%= @labour.cost_per_shift %></tr>
+<tr><td>No of Cavity:</td>
+<td><%= @labour.no_of_cavity %></tr>
+</table>
+</div>
+</div>
+
+<div class="col-md-6">
+<div style="width:80%;">
+<table class="table">
+<tr><td>Cycle Time:</td>
+<td><%= @labour.cycle_time %></tr>
+<tr><td>Production Cycle Time:</td>
+<td><%= @labour.cycle_time %></tr>
+<tr><td>Working Hours:</td>
+<td><%= @labour.working_hrs %></tr>
+<tr><td>Expected Production:</td>
+<td><%= @labour.expected_production.to_f.round(2) %></tr>
+<tr><td>Total No of Item Produced:</td>
+<td><%= @labour.total_no_of_items_produced %></td></tr>
+<tr><td>Difference:</td>
+<td><%= @labour.difference.to_f.round(2) %></tr>
+<tr><td>Efficiency in %:</td>
+<td><%= @labour.efficiency.to_f.round(2) %></tr>
+<tr><td>No of Hrs IDLE Time:</td>
+<td><%= @labour.no_of_hrs_idle %></tr>
+<tr><td>No of Minutes IDLE Time:</td>
+<td><%= @labour.no_of_mins_idle %></tr>
+<tr><td>Reasons for IDLE Time:</td>
+<td><%= @labour.reasons_for_idle %></tr>
+<tr><td >Remarks</td>
+<td ><%= @labour.remarks%></td></tr>
+<tr><td>Supervisor Name:</td>
+<td><%= @labour.supervisor_name %></tr>
+<tr><td>Created_by</td>
+<td><%= @labour.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @labour.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @labour.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @labour.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,31 @@
+<div class="col-md-9">
+<%if admin?%>
+<div class="add"><%= link_to users_finished_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h4>Finished Production Report</h4>
+<div class="table-striped custab">
+<table class="table">
+<th>S.no</th>
+<th>Finished Goods</th>
+<th>Pending production</th>
+<%t=0%>
+<%$fin = @aass.sort_by{|i| i[1].to_i}.reverse%>
+<%$fin.each do |j|%>
+<%t=t+1%>
+
+<tr>
+<td><%=t%></td>
+<td><%=j[0]%></td>
+<td><%=j[1]%></td>
+</tr>
+<%end%>
+<b><tr>
+<td></td>
+<th>Total</th>
+<td><%=@total%></td></tr></b>
+<%$ttl=@total%>
+</table>
+</div>
+</div>
+

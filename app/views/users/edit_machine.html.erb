@@ -1,0 +1,41 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Machine Maintenance
+  <div class="add"><%= link_to users_index_machineMaintenance_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+
+<div class="row">
+<div class="col-md-9">
+	<div style="width: 35%; margin-left: 56%;">
+<table class="table">
+<%= form_for @machine_maintenance, :url => {:controller => "users", :action => "update_machine", :id=>@machine_maintenance} do |i| %>
+<tbody>
+<tr><td><%= i.label :mach_no, "Machine No" %></td></tr>
+<tr><td><%= i.collection_select(:mach_no, MachineUsed.select(:machine_used_list).order('machine_used_list ASC').uniq, :machine_used_list,:machine_used_list,{:prompt => "--select--"}, {:required => true}) %></td></tr>
+<tr><td><%= i.label :type_of_prob, "Type of Machine problem" %></td></tr>
+<tr><td><%= i.select :type_of_prob, ["Electrical","Electronic","Mechanical","Hydraulic"],{:include_blank=> '--select problem type--'}, :required => true%></td></tr>
+<tr><td><%= i.label :date, "Date" %></td></tr>
+<tr><td><%= i.text_field :date,:id => "txtFrom",:required => true %></td></tr>
+<tr><td><%= i.label :spare_name, "Spare Name" %></td></tr>
+<tr><td><%= i.text_field :spare_name,:required => true %></td></tr>
+<tr><td><%= i.label :spare_cost, "Spare Cost" %></td></tr>
+<tr><td><%= i.number_field :spare_cost, :step => "any", :required => true %></td></tr>
+<%= i.hidden_field :updated_by,:value => @user %>
+<tr><td><center><%= i.submit "Update" ,:class=>"btn btn-info" %></center></td></tr>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

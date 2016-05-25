@@ -1,0 +1,126 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Show Issues
+                      <div class="add">
+<%= link_to users_index_issues_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                      <div class="table-container">
+<div class="col-md-6">
+<table class="table">
+
+<tr><td>Order No:
+<td><%= @issue.order_no %></td></tr>
+<tr><td>Order Date:
+<td><%= @issue.order_date %></td></tr>
+<tr><td>Party:
+<td><%= @issue.party %></td></tr>
+<tr><td>Issue Slip No:
+<td><%= @issue.issue_slip_no %></td></tr>
+<tr><td>Issue Date:
+<td><%= @issue.issue_date %></td></tr>
+<tr><td>Machine No:
+<td><%= @issue.machine_no %></td></tr>
+<tr><td>Shift:
+<td><%= @issue.shift %></td></tr>
+<tr><td>Raw material issues:
+<td><%= @issue.rm_issues %></td></tr>
+<tr><td>Raw material Qty:
+<td><%= @issue.rm_mat_qty.to_f.round(4) %></td></tr>
+<tr><td>Raw material Qty Return:
+<td><%= @issue.rm_qty_return %></td></tr>
+<tr><td>Raw material Rate per kg/Nos:
+<td><%= @issue.rm_rate %></td></tr>
+<tr><td>Type of Colouring Agent :
+<td><%= @issue.chemicals_type %></td></tr>
+<tr><td>Color issues (Colouring Agent):
+<td><%= @issue.chemicals %></td></tr>
+<tr><td>Colouring Agent Qty:
+<td><%= @issue.chem_qty %></td></tr>
+<tr><td>Colouring Agent Qty Return:
+<td><%= @issue.chem_qty_return %></td></tr>
+<tr><td>Colouring Agent Rate Per Kg/Nos:
+<td><%= @issue.chem_rate %></td></tr>
+<tr><td>Reground material issues(RG):
+<td><%= @issue.rg_material_issues %></td></tr>
+<tr><td>Reground Qty issued:
+<td><%= @issue.rg_qty_issued %></td></tr>
+<tr><td>Reground Qty Return:
+<td><%= @issue.rg_qty_return %></td></tr>
+<tr><td>RG-Grenerated:
+<td><%= @issue.rg_consume %></td></tr>
+<tr><td>Reground Rate Per Kg/Nos:
+<td><%= @issue.rg_rate %></td></tr>
+<tr><td>Insert Material:
+<td><%= @issue.insert_material %></td></tr>
+<tr><td>Bush Qty Issues:
+<td><%= @issue.bush_mat_issues %></td></tr>
+<tr><td>Bush Qty Issued in kgs:
+<td><%= @issue.bush_qty_issued %></td></tr>
+<tr><td>Bush Qty Return:
+<td><%= @issue.bush_qty_return %></td></tr>
+</table>
+</div>
+
+<div class ="col-md-6">
+<table class="table">
+<tr><td>Bush Rate Per/Nos:
+<td><%= @issue.bush_rate %></td></tr>
+<tr><td>Ferul Qty Issues:
+<td><%= @issue.ferul_mat_issues %></td></tr>
+<tr><td>Ferul Qty Issued in kgs:
+<td><%= @issue.ferul_qty_issued %></td></tr>
+<tr><td>Ferul Qty Return:
+<td><%= @issue.ferul_qty_return %></td></tr>
+<tr><td>Ferul Rate Per/Nos:
+<td><%= @issue.ferul_rate %></td></tr>
+<tr><td>RM Qty:
+<td><%= @issue.rm_qty.to_f.round(4) %></td></tr>
+<tr><td>Colouring Agent Qty:
+<td><%= @issue.che_qty.to_f.round(4) %></td></tr>
+<tr><td>RG Qty:
+<td><%= @issue.rg_qty.to_f.round(4) %></td></tr>
+<tr><td>Bush Qty:
+<td><%= @issue.bush_qty.to_f.round(4) %></td></tr>
+<tr><td>Ferul Qty:
+<td><%= @issue.ferul_qty.to_f.round(4) %></td></tr>
+<tr><td>Lumps:
+<td><%= @issue.generated.to_f.round(4) %></td></tr>
+<tr><td>Net Consumption without Lumps:
+<td><%= @issue.lumps.to_f.round(4) %></td></tr>
+<tr><td>Production without RG in kgs:
+<td><%= @issue.qty_after_rg.to_f.round(4) %></td></tr>
+<tr><td>RM Cost:
+<td><%= @issue.rm_cost.to_f.round(4) %></td></tr>
+<tr><td>Colouring Agent Cost:
+<td><%= @issue.che_cost.to_f.round(4)%></td></tr>
+<tr><td>RG Cost:
+<td><%= @issue.rg_cost.to_f.round(4) %></td></tr>
+<tr><td>Bush Cost:
+<td><%= @issue.bush_cost.to_f.round(4) %></td></tr>
+<tr><td>Ferul Cost:
+<td><%= @issue.ferul_cost.to_f.round(4) %></td></tr>
+<tr><td>Consolidated Qty:
+<td><%= @issue.consolidated_qty.to_f.round(4) %></td></tr>
+<tr><td>Consolidated Cost:
+<td><%= @issue.consolidated_cost.to_f.round(4) %></td></tr>
+<tr><td>Created_by</td>
+<td><%= @issue.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @issue.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @issue.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @issue.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+	</div>

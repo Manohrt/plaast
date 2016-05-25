@@ -1,0 +1,73 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Production Report
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+
+<%= form_for :production_report, :url=>{ :controller => "users", :action => "productn_report",:method => "get"} do |i| %>
+<center><table>
+	<tr style=border-color:#252525>
+<td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;"%></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info", :onclick=> "return validate()"%></td>
+</tr>
+</table>
+</center>
+</div>
+<br><br>
+
+  <table class="table">
+  	<tr><td>
+<input type="checkbox" id="selectall" onClick="selectAll(this)" />  Select All </td></tr>
+
+<tr>
+<td><input type="checkbox" name=subject[] value="order_no/Order Number">  Order Number</td>
+<td><input type="checkbox" name=subject[] value="order_date/Order Date">  Order Date</td>
+<td><input type="checkbox" name=subject[] value="party/Party">  Party</td>
+<td><input type="checkbox" name=subject[] value="issue_slip_no/Issue Slip Number">  Issue Slip Number</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="issue_date/Issue Date">  Issue Date</td>
+<td><input type="checkbox" name=subject[] value="shift/Shift">  Shift</td>
+<td><input type="checkbox" name=subject[] value="rm_issues/RM Issue">  RM Issues</td>
+<td><input type="checkbox" name=subject[] value="chemicals_type/Type of Colouring Agent">  Type of Colouring Agent </td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="chemicals/Colouring Agent">  Colouring Agent</td>
+<td><input type="checkbox" name=subject[] value="rg_material_issues/RG Material Issues">  RG Material Issues</td>
+<td><input type="checkbox" name=subject[] value="qty_after_rg/Qty After RG">  Qty After RG</td>
+<td><input type="checkbox" name=subject[] value="bush_mat_issues/Bush Material Issues">  Bush Material Issues</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="consolidated_cost/Consolidated Cost">  Consolidated Cost</td>
+<td><input type="checkbox" name=subject[] value="finished_goods_name/Finished Goods Name">  Finished Goods Name</td>
+<td><input type="checkbox" name=subject[] value="total_no_of_items_produced/Total No of Item Produced">  Total No of Item Produced</td>
+<td><input type="checkbox" name=subject[] value="weight_per_item/Weight per Item">  Weight per Item at Production</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="total_weight_consumed/Total Weight Consumed">  Total Weight Consumed</td>
+<td><input type="checkbox" name=subject[] value="standard_weight/Standard Weight">  Standard Weight</td>
+<td><input type="checkbox" name=subject[] value="no_of_kgs_used_for_production/No of Kgs Used for Production">  No of Kgs Used for Production</td>
+<td><input type="checkbox" name=subject[] value="variance/Variance">  Variance</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rejected_nos/Rejected Nos">  Rejected Nos</td>
+<td><input type="checkbox" name=subject[] value="reason_rejection/Rejection Reason">Rejection Reason</td>
+<td><input type="checkbox" name=subject[] value="weight_per_item/Weight per Item">  Weight per Item</td>
+<td><input type="checkbox" name=subject[] value="rejected_nos_wt_for_re_grounding/Rejected Nos Weight for Re-Grounding">  Rejected Nos Weight for Re-Grounding</td>
+</tr>
+<tr>
+<td><input type="checkbox" name=subject[] value="lumps/Lumps">  Lumps</td>
+<td><input type="checkbox" name=subject[] value="realization_in_wt/Realization in Wt">  Realization in Wt</td>
+<td><input type="checkbox" name=subject[] value="realization_in_per/Realization (in %)">   Realization (in %)</td>
+<td><input type="checkbox" name=subject[] value="power_unit_reading/Power Unit Reading">  Power Unit Reading</td></tr>
+<td><input type="checkbox" name=subject[] value="power_unit_cost_kg/Power Unit Cost per Kg">  Power Unit Cost/Kg</td>
+<td><input type="checkbox" name=subject[] value="power_unit_cost_piece/Power Unit Cost per Piece">  Power Unit Cost/Piece</td>
+</tr>
+</table>
+<% end %>
+</div>
+</div>
+</div>
+</div>

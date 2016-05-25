@@ -1,0 +1,41 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="set">
+<div class="body-container">
+<div class="body-header">
+Reason for Idle Time
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Reason for Idle Time
+</div>
+<table class="table">
+    <thead>
+<tr>
+<th>Reasons</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<%= form_for([@reason_for_idle_time],validate:true, :url=>{:controller=>"users", :action => "reasonforidle_create"}) do |i|%>
+<tr><td><%=i.text_field:reason_for_idle_time_list,:required => true%></td>
+<td align="center"><%= i.submit "Add",:class=>"btn btn-info"%>
+ <%end%></td></tr>
+
+<% @reason_for_idle_time1.each do |i| %>
+<tr><td><div class="fot"><%= i.reason_for_idle_time_list%></div></td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'reasonforidle_delete', :id => i.id }%></td>
+
+</tr>
+<%end%>
+</tbody>
+</table>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+    <%= will_paginate @reason_for_idle_time1, :container => false %>
+  </div>
+</div>
+</div>
+</div>

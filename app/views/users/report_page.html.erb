@@ -1,0 +1,214 @@
+<div class="bod">
+<h4>Report Details</h4>
+<div class="row">
+<div class="col-md-12">
+<div class="table table-striped custab">
+<table class="table">
+<%= form_for :labour, :url=>{ :controller => "users", :action => "idle_time_report",:method => "get"} do |f| %>
+  <table>
+  <h5 style="font-size:17px;">Idle Time Report :</h5>
+  <tr>
+  <td><%= f.label :initial_date,"From" %></td>
+  <td><%= f.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+  <td><%= f.label :final_date,"To" %></td>
+  <td><%= f.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+  <td><%= f.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+ </table>
+<% end %>
+
+<%= form_for :labour, :url=>{ :controller => "users", :action => "supervisor_name_report",:method => "get"} do |e| %>
+  
+  <h5 style="font-size:17px;">Supervisor Name Report :</h5>
+  <table>
+  <td><%= e.label :initial_date,"From" %></td>
+  <td><%= e.text_field :intial_date,:id => "txtFrom1",:required => true,:class=>"txt" %></td>
+  <td><%= e.label :final_date,"To" %></td>
+  <td><%= e.text_field :final_date,:id=>"txtTo1",:required => true,:class=>"txt" %></td>
+  <td><%= e.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+ </table>
+<% end %>
+
+<%= form_for :production_report, :url=>{ :controller => "users", :action => "party_production",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Party Production Report (Pending) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom2",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo2",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+ </table>
+<% end %>
+
+   <%= form_for :production_report, :url=>{ :controller => "users", :action => "finished_production",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Finished Report (Pending) :</h5>
+   <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom3",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo3",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+ </table>
+<% end %>
+
+
+
+<%= form_for :production_report, :url=>{ :controller => "users", :action => "finished_goods_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Finished Goods Report (Breakup of Goods Produced) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom4",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo4",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+  </table>
+<% end %>
+
+<%= form_for :production_report, :url=>{ :controller => "users", :action => "rate_per_kgs_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Rate per kgs Report :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom5",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo5",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+  </table>
+<% end %>
+
+
+<!--%= form_for :production_report, :url=>{ :controller => "users", :action => "rate_per_unit_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Rate per unit Report :</h5>
+  <tr>
+  <td><!%= i.label :initial_date,"From" %></td>
+  <td><1%= i.text_field :intial_date,:id => "txtFrom6",:required => true,:class=>"txt" %></td>
+  <td><!%= i.label :final_date,"To" %></td>
+  <td><!%= i.text_field :final_date,:id=>"txtTo6",:required => true,:class=>"txt" %></td>
+  <td><!%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+<!-% end %-->
+
+<!--%= form_for :order_summary, :url=>{ :controller => "users", :action => "order_summary_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Order Summary Report (Month/Period Wise) :</h5>
+   <tr>
+  <td><-%= i.label :initial_date,"From" %></td>
+  <td><-%= i.text_field :intial_date,:id => "txtFrom7",:required => true,:class=>"txt" %></td>
+  <td><-%= i.label :final_date,"To" %></td>
+  <td><-%= i.text_field :final_date,:id=>"txtTo7",:required => true,:class=>"txt" %></td>
+  <td><-%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+<-% end %-->
+
+  <%= form_for :purchase, :url=>{ :controller => "users", :action => "purchase_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Purchase Report (Month/Period Wise) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom8",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo8",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+<% end %>
+
+  <%= form_for :issue, :url=>{ :controller => "users", :action => "issues_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Issue Report (Month/Period Wise) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom9",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo9",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+<% end %>
+
+  <%= form_for :production_report, :url=>{ :controller => "users", :action => "productn_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Production Report (Month/Period Wise) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :intial_date,:id => "txtFrom10",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo10",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+  <% end %>
+  
+ <!--%= form_for :order_summary, :url=>{ :controller => "users", :action => "party_order_qty",:method => "get"} do |i| %>
+  <table>
+  <h5>Party - Qty Received(Order Summary):</h5>
+  <tr>
+  <td><!%= i.label :initial_date,"From" %></td>
+  <td><!%= i.text_field :intial_date ,:id => "txtFrom11",:required => true,:class=>"txt" %></td>
+  <td><!%= i.label :final_date,"To" %></td>
+  <td><!%= i.text_field :final_date,:id=>"txtTo11",:required => true,:class=>"txt" %></td>
+  </tr>
+  </table>
+  <table>
+  <tr>
+  <td><!%= i.label :party,"Party" %></td>
+  <td><!%= i.collection_select(:party, PartyOrder.select(:party_order_list).uniq, :party_order_list, :party_order_list, :prompt=> 'select', :class =>"party", :id=>"party",:required => true)%> </td>
+  <td><!%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  <!% end %>
+  </table>
+  
+  <!%= form_for :order_summary, :url=>{ :controller => "users", :action => "finished_order_qty",:method => "get"} do |i| %>
+  <table>
+  <h5>Finished Goods - Qty Received(Order Summary):</h5>
+  <tr>
+  <td><!%= i.label :initial_date,"From" %></td>
+  <td><!%= i.text_field :intial_date ,:id => "txtFrom12",:required => true,:class=>"txt" %></td>
+  <td><!%= i.label :final_date,"To" %></td>
+  <td><!%= i.text_field :final_date,:id=>"txtTo12",:required => true,:class=>"txt" %></td>
+  </tr>
+  </table>
+  <table>
+  <tr>
+  <td><!%= i.label :goods_finished,"Finished Goods Name" %></td>
+  <td ><!%= i.collection_select(:goods_finished, FinishedGoodsName.select(:finished_goods_name_list).uniq, :finished_goods_name_list, :finished_goods_name_list, :prompt=> 'select',:require=>true)%></td>
+  <td><!%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  <!% end %>
+  </table-->
+
+  <%= form_for :ireturn, :url=>{ :controller => "users", :action => "return_report",:method => "get"} do |i| %>
+  <table>
+  <h5 style="font-size:17px;">Return Report (Month/Period Wise) :</h5>
+  <tr>
+  <td><%= i.label :initial_date,"From" %></td>
+  <td><%= i.text_field :initial_date,:id => "txtFrom13",:required => true,:class=>"txt" %></td>
+  <td><%= i.label :final_date,"To" %></td>
+  <td><%= i.text_field :final_date,:id=>"txtTo13",:required => true,:class=>"txt" %></td>
+  <td><%= i.submit "Submit",:class=>"btn btn-info" %></td></tr>
+  </table>
+  <% end %>
+
+  <!--%= form_for :order_summary, :url=>{ :controller => "users", :action => "order_no_report",:method => "get"} do |i| %>
+  <table>
+  <h5>Order Number Report(Month/Period Wise):</h5>
+  <tr>
+  <td><!%= i.label :initial_date,"From" %></td>
+  <td><!%= i.text_field :initial_date,:id => "txtFrom14",:required => true,:class=>"txt" %></td>
+  <td><!%= i.label :final_date,"To" %></td>
+  <td><!%= i.text_field :final_date,:id=>"txtTo14",:required => true,:class=>"txt" %></td></tr>
+  <tr><!td><!%= i.label :order_no,"Order No" %></td>
+  <td><!%= i.text_field :order_no,:required => true,:class=>"txt" %></td>
+  <td><!%= i.submit "Submit" %></td></tr>
+  </table>
+  <!% end %-->
+
+</table>
+</div>
+</div>
+</div>
+</div>

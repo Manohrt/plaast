@@ -1,0 +1,43 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="set">
+<div class="body-container">
+<div class="body-header">
+Raw Materials
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Raw Materials 
+</div>
+<table class="table">
+<thead>
+<tr>
+<th>Raw Materials</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<%= form_for([RawMaterial.new], validate: true, :url=>{:controller=>"users", :action => "raw_create"}) do |i|%>
+<tr><td><%=i.text_field:raw_material_list,:required => true%>
+<td align="center"><%= i.submit "Add",:class=>"btn btn-info" %>
+ <%end%></td></tr>
+
+<% @raw_material1.each do |i| %>
+<tr>
+<td><div class="fot"><%= i.raw_material_list%></div></td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'raw_delete', :id => i.id }%></td>
+
+</tr>
+</tbody>
+<%end%>
+</table>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+    <%= will_paginate  @raw_material1, :container => false %>
+  </div>
+</div>
+</div>
+</div>
+

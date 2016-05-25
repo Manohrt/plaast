@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month: MyString
+  item: MyString
+  bill_value: MyString
+  grn_no: MyString
+  desc: MyString
+  rate: MyString
+  date: MyString
+  order_no: MyString
+  debit: MyString
+  party: MyString
+  qty_accepted: MyString
+  reasons: MyString
+  trading_material: MyString
+  rejected: MyString
+
+two:
+  month: MyString
+  item: MyString
+  bill_value: MyString
+  grn_no: MyString
+  desc: MyString
+  rate: MyString
+  date: MyString
+  order_no: MyString
+  debit: MyString
+  party: MyString
+  qty_accepted: MyString
+  reasons: MyString
+  trading_material: MyString
+  rejected: MyString

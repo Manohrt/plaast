@@ -1,0 +1,45 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Return </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_return_path, class:"fa fa-close" %></b></h3>
+<div style="padding-left:20px;width:70%">
+<table class="table">
+<tr><td>Order No</td>
+<td><%= @issue.order_no %></td></tr>
+<tr><td>Issue Date</td>
+<td><%= @issue.issue_date %></td></tr>
+<tr><td>Raw Material Qty Return</td>
+<td><%= @issue.rm_qty_return %></td></tr>
+<tr><td>Raw Material Issues</td>
+<td><%= @issue.rm_issues %></td></tr>
+<tr><td>Chemical Qty Return</td>
+<td><%= @issue.chem_qty_return %></td></tr>
+<tr><td>Re-Ground Rate per Kg/Nos</td>
+<td><%= @issue.rg_rate.to_f.round(2) %></td></tr>
+<tr><td>Grn No</td>
+<td><%= @return.grn_no %></td></tr>
+<tr><td>Created_by</td>
+<td><%= @return.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @return.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @return.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @return.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

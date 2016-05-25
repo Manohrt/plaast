@@ -1,0 +1,82 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+        Finished Summary
+         <div class="add">
+		<% if not admin? %>
+		<%= link_to users_index_productionForFinished_path, class: "btn btn-default",:title => 'Add' do%>
+		<i class="fa fa-plus"></i><%end%>
+		<%end%>
+	</div>
+<br>
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Finished
+</div>
+
+<table class="table">
+<thead>
+<tr>
+<th>S.No</th>
+<th>Order No</th>
+<th>Order Date</th>
+<th>Issue Slip No</th>
+<th>Shift</th>
+<% if factory?%>
+<!--th>Created_by</th>
+<th>Updated_by</th-->
+<% end %>
+<th colspan="3"><center>Action</center></th>
+</tr>
+</thead>
+<% if @finished.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+
+<ul id = "Issues" >
+<%t=0%>
+<% @finished.each do |i| %>
+<%t=t+1%>
+<!--% if Finished.exists?(:production_report_id => i.id) %-->
+<tr>
+<td><div class="fot"><%= t %></div></td>
+<td><div class="fot"><%= i.order_no%></div></td>
+<td><div class="fot"><%= i.issue_date%></div></td>
+<td><div class="fot"><%= i.issue_slip_no%></div></td>
+<td><div class="fot"><%= i.shift%></div></td>
+<% if admin? %>
+<td><center><%= link_to users_show_finished_path(:id => i.id), class: "btn btn-default",:title => 'Show' do%>
+<i class="fa fa-eye"></i></center><%end%></td>
+<%end%>
+<% if factory? %>
+<!--td><-%= i.created_by %></td>
+<td><-%= i.updated_by %-></td-->
+
+<td><%= link_to users_show_finished_path(:id => i.id), class: "btn btn-default",:title => 'Show' do%>
+<i class="fa fa-eye"></i><%end%></td>
+<td><%= link_to users_edit_finished_path(:id => i.id), class: "btn btn-default",:title => 'Edit' do%>
+<i class="fa fa-pencil"></i><%end%>
+</td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'delete_finished', :id => i.id }%></td>
+<%end%>
+<% if operator? %>
+<td><center><%= link_to users_show_finished_path(:id => i.id), class: "btn btn-default",:title => 'Show' do%>
+<i class="fa fa-eye"></i></center><%end%></td>
+<%unless i.updated_at <(Time.now- 7.day)%>
+<td><%= link_to users_edit_finished_path(:id => i.id), class: "btn btn-default",:title => 'Edit' do%>
+<i class="fa fa-pencil"></i><%end%>
+</td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'delete_finished', :id => i.id }%></td>
+<%end%>
+</tr>
+<%end%>
+<!--%end%-->
+<%end%>
+</table>
+<%end%>
+</div>
+</div>

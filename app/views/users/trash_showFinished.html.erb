@@ -1,0 +1,59 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Finished </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_finished_path, class:"fa fa-close" %></b></h3>
+<div style="padding-left:20px;width:70%">
+<table class="table">
+<tr><td>Order No</td>
+<td><%= @issue[0].order_no%></td></tr>
+<tr><td>Order Date</td>
+<td><%= @issue[0].order_date %></td></tr>
+<tr><td> Party</td>
+<td><%= @issue[0].party %></td></tr>
+<tr><td> Material Cost</td>
+<td><%= @issue[0].consolidated_cost.to_f.round(2) %></td></tr>
+<tr><td> Labour Cost </td>
+<td><%= @labour[0].cost_per_shift.to_f.round(2) %></td></tr>
+<tr><td>Finished Goods Name </td>
+<td><%=  @production_report[0].finished_goods_name %></td></tr>
+<tr><td>Total No of Items Produced </td>
+<td><%=  @production_report[0].total_no_of_items_produced  %></td></tr>
+<tr><td>  Rejected Nos </td>
+<td><%=  @production_report[0].rejected_nos  %></td></tr>
+<tr><td>Nett Available </td>
+<td><%=  @finished.nett_available  %></td></tr>
+<tr><td>Freight </td>
+<td><%=  @finished.freight.to_f.round(2)  %></td></tr>
+<tr><td>Overheads </td>
+<td><%=  @finished.overheads.to_f.round(2)   %></td></tr>
+<tr><td>Packing Materials </td>
+<td><%=  @finished.packing_materials %></td></tr>
+<tr><td>Spares Used </td>
+<td><%=  @finished.spares_used  %></td></tr>
+<tr><td>Spares Cost </td>
+<td><%=  @finished.spares_cost.to_f.round(2)   %></td></tr>
+<tr><td>Created_by</td>
+<td><%= @finished.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @finished.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @finished.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @finished.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

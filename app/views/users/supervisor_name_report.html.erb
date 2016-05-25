@@ -1,0 +1,32 @@
+<div class="bod">
+<%if admin?%>
+<div class="add"><%= link_to users_supervisor_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+<h4>Supervisor Based Reports</h4>
+<div class="table striped custab">
+<table class="table">
+<th>S.No</th>
+<th>Supervisor Name</th>
+<th>Reason for idle time</th>
+<th>Number of minutes</th>
+<!--%@labour.each do|i|%-->
+<%t=0%>
+<%$sn=@ass.sort_by{|i| i[1].to_i}.reverse%>
+<%@ass.each do |j|%>
+<%t=t+1%>
+<tr>
+<td><%=t%></td>	
+<td><%=j[0]%></td>
+<td><%=j[1]%></td>
+<td><%=j[2]%></td>
+</tr>
+<%end%>
+<tr><td></td>
+<td></td>
+<th>Total</th>
+<td><%=@total%></td></tr>
+<%$re= @total%>
+</table>
+</div>
+</div>

@@ -1,0 +1,72 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+        Production Report - Issue
+         <div class="add">
+         	<%= link_to users_index_productionReport_path, class: "btn btn-default",:title => 'List of Production Reports', :rel => 'tooltip' do %>
+<i class="fa fa-list"></i><%end%>
+	</div>
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Issues for Production Report
+</div>
+<table class="table">
+    <thead>
+<tr>
+<th>Sl.No</th>
+<th>Order No</th>
+<th>Issue Date</th>
+<th>Issue Slip No</th>
+<th>Shift</th>
+<th>Machine No</th>
+<th>Party</th>
+<th>Action</th>
+</tr>
+</thead>
+<% if @issue.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+
+
+<%t=0%>
+<ul id = "Issues" >
+<!--%unless ProductionReport.exists?(:issue_id=>@x)%-->
+<% @issue.each do |i| %>
+<%unless ProductionReport.exists?(:issue_id=>i.id)%>
+<%t=t+1%>
+<!--%@x=i.id%></For Pagination Process-->
+<tbody>
+<tr class="odd">
+<td><%=t%></td>
+<td><%= i.order_no%></td>
+<td><%= i.issue_date%></td>
+<td><%= i.issue_slip_no%></td>
+<td><%= i.shift%></td>
+<td><%= i.machine_no%></td>
+<td><%= i.party%></td>
+<% if not admin? %>
+<td><%= link_to users_add_productionReport_path(:id => i.id), class: "btn btn-default",:title => 'Add' do%>
+<i class="fa fa-plus"></i><%end%>
+</td>
+<%end%>
+<%end%>
+</tr>
+</tbody>
+<%end%>
+<%end%>
+</table>
+</div>
+</div>
+<!--% if ProductionReport.exists?(:issue_id => @x) %-->
+<div class="digg_pagination" align="right">
+    <%= will_paginate @issue, :container => false %>
+  </div><!--%end%-->
+</div>
+</div>
+
+
+

@@ -1,0 +1,44 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Issue Report
+                    <%if admin? and not @issue.blank?%>
+
+<div class="add"><%= link_to users_issue_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>                             
+<th>Sl.No</th>
+<%$ishd.each do|i|%>
+<th><%=i%></th>
+<%end%>
+</tr>
+</thead>
+<% if @issue.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+<tbody>
+<%t=1%>
+<%@issue.each do|k|%>
+<tr class="odd">
+<td>  <%= t %></td>
+<%$isfd.each do|i|%>
+<td>  <%= @issue.where(:id=>k.id).maximum(i.to_sym)%></td>
+<%end%>
+</tbody>
+<%t=t+1%>
+</tr>
+<% end %>
+<%end%>
+</table>
+</div>
+</div>
+</div>
+

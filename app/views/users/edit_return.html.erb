@@ -1,0 +1,54 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Returns
+  <div class="add"><%= link_to users_index_return_path, class: "btn btn-default",:title => 'List of Issues For Returns', :rel => 'tooltip' do %>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+
+<div class="row">
+<div class="col-md-6">
+<table class="table">
+<%= form_for :issue , :url=>{:controller=>"users",:action=>"update_issues" }  do |i|%>
+<tr><td><%= i.label :order_no,"Order No" %></td></tr>
+<tr><td><%= i.number_field :order_no,:style=>"background:#1B5C90;color:#fff;",:value=>@issue.order_no,:readonly => true %></td></tr>
+<tr><td><%= i.label :issue_date," Issue Date ",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :issue_date,:style=>"background:#1B5C90;color:#fff;",:id=>"txtFrom",:value=>@issue.issue_date %></td></tr>
+<tr><td><%= i.label :rm_qty_return,"Raw Material Qty Return" %></td></tr>
+<tr><td><%= i.number_field :rm_qty_return,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:readonly=> "true",:value=>@issue.rm_qty_return %></td></tr>
+<tr><td><%= i.label :rm_issues,"Raw Material Issues"%></td></tr>
+<tr><td><%= i.text_field :rm_issues,:style=>"background:#1B5C90;color:#fff;",:readonly=> "true",:value=>@issue.rm_issues %></td></tr>
+</table>
+</div>
+
+<div class="col-md-6">
+<table class="table">
+<tr><td><%= i.label :chem_qty_return,"Chemical Qty Return" %></td></tr>
+<tr><td><%= i.number_field :chem_qty_return,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:step => "0.0001",:value=>@issue.chem_qty_return %></td></tr>
+<tr><td><%= i.label :rg_rate,"Re-Ground Rate per Kg/Nos" %></td></tr>
+<tr><td><%= i.number_field :rg_rate,:style=>"background:#1B5C90;color:#fff;",:readonly=> "true",:step => "0.0001",:value=>@issue.rg_rate %></td></tr>
+<%end%>
+<%= form_for @return[0] , :url=>{:controller=>"users",:action=>"update_return",:id=>@return[0].id }  do |i|%>
+<tr><td><%= i.label :grn_no,"Grn No" %></td></tr>
+<tr><td><%= i.number_field :grn_no,:required => true,:autofocus=>true %></td></tr>
+<%= i.hidden_field :updated_by,:value=>@user%>
+</table>
+</div>
+</div>
+<div class="row">
+<center>
+<table>
+<tr><td><%= i.submit "Update",:class=>"btn btn-info btn-sm" %></td></tr>
+</table>
+</center>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

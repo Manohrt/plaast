@@ -1,0 +1,155 @@
+ <div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Issues
+  <div class="add"><%= link_to users_index_issues_path, class: "btn btn-default", :title => 'List', :rel =>'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+<%= form_for @issue, :url=>{:action=>"update_issues", :id => @issue } do |i|%>
+<br>
+<div clas="row">
+<div class="col-md-4">
+	<div style="width: 79%;">
+<table class="table">
+<tbody>
+  
+<tr><td><%= i.label :order_no,"Order No" %></td></tr>
+<tr><td><%= i.number_field :order_no,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:autofocus=>true %></td></tr>
+<tr><td><%= i.label :order_date," Order Date",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :order_date,:id=>"txtFrom"%></td></tr>
+<tr><td><%= i.label :party,"Party" %></td></tr>
+<tr><td><%= i.collection_select(:party, PartyOrder.select(:party_order_list).order('party_order_list ASC').uniq, :party_order_list,:party_order_list,:prompt=> "select") %></td></tr>
+<tr><td><%= i.label :issue_slip_no,"Issue Slip No" %></td></tr>
+<tr><td><%= i.number_field :issue_slip_no,:style=>"background:#1B5C90;color:#fff;",:readonly => true %></td></tr>
+<tr><td><%= i.label :issue_date," Issue Date",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :issue_date,:id=>"txtTo"%></td></tr>
+<tr><td><%= i.label :machine_no,"Machine No" %></td></tr>
+<tr><td><%= i.collection_select(:machine_no, MachineUsed.select(:machine_used_list).order('machine_used_list ASC').uniq, :machine_used_list,:machine_used_list,:prompt=> "select") %></td></tr>
+<!--%= i.collection_select(:machine_no, Issue.select(:machine_no).order(' ASC').uniq, :macine_no, :machine_no, :prompt=> 'select',:required => true)%-->
+<tr><td><%= i.label :shift,"Shift" %></td></tr>
+<tr><td><%= i.text_field :shift,:style=>"background:#1B5C90;color:#fff;",:readonly => "true"%>
+<!--%= i.collection_select(:shift, Issue.select(:shift).order(' ASC').uniq, :shift, :shift, :prompt=> 'select',:required => true)%-->
+</td></tr>
+<tr><td><%= i.label :rm_issues,"Raw Material Issues"%></td></tr>
+<tr><td><%= i.text_field :rm_issues,:required => true %></td></tr>
+<tr><td><%= i.label :rm_mat_qty,"Raw Material Qty" %></td></tr>
+<tr><td><%= i.number_field :rm_mat_qty,:step => "0.001",:id=>"txt1",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :rm_qty_return,"Raw Material Qty Return" %></td></tr>
+<tr><td><%= i.number_field :rm_qty_return,:step => "0.001",:id=>"txt2",:onkeyup=>"sub()",:required => true%></td></tr>
+<tr><td><%= i.label :rm_rate,"Raw Material Rate per Kg/Nos" %></td></tr>
+<tr><td><%= i.number_field :rm_rate,:step => "0.001",:id=>"txt14",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :chemicals_type,"Type Of Colouring Agent" %></td></tr>
+<tr><td><%= i.collection_select(:chemicals_type, ChemicalType.select(:chemical_type_list).order('chemical_type_list ASC').uniq, :chemical_type_list, :chemical_type_list, :prompt=> '--select--',:required => true)%></td></tr>
+<tr><td><%= i.label :chemicals,"Colour Issues (Colouring Agent)" %></td></tr>
+<tr><td><%= i.collection_select(:chemicals, Chemical.select(:chemical_list).order('chemical_list ASC').uniq, :chemical_list, :chemical_list,:prompt=>"--select--")%></td></tr>
+<tr><td><%= i.label :chem_qty,"Colouring Agent Qty" %></td></tr>
+<tr><td><%= i.number_field :chem_qty,:step => "0.001",:id=>"txt4",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :chem_qty_return,"Colouring Agent Qty Return" %></td></tr>
+<tr><td><%= i.number_field :chem_qty_return,:step => "0.001",:id=>"txt5",:onkeyup=>"sub()",:required => true %></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+	<div style="padding: 8px 22px 20px 18px; width:79%">
+<table class="table">
+	<tbody>
+ <tr><td><%= i.label :chem_rate,"Colouring Agent Rate per Kg/Nos" %></td></tr>
+<tr><td><%= i.number_field :chem_rate,:step => "0.001",:id=>"txt16",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :rg_material_issues,"Re-Ground Material issues(RG)" %></td></tr>
+<tr><td><%= i.text_field :rg_material_issues,:required => true %></td></tr>
+<tr><td><%= i.label :rg_qty_issued,"Re-Ground Qty Issued" %></td></tr>
+<tr><td><%= i.number_field :rg_qty_issued,:step => "0.0001",:id=>"txt7",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :rg_consume,"RG-Generated" %></td></tr>
+<tr><td><%= i.number_field :rg_consume,:step => "0.0001",:id=>"txt12",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :rg_qty_return,"Re-Ground Qty Return" %></td></tr>
+<tr><td><%= i.number_field :rg_qty_return,:step => "0.0001",:id=>"txt8",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :rg_rate,"Re-Ground Rate per Kg/Nos" %></td></tr>
+<tr><td><%= i.number_field :rg_rate,:step => "0.0001",:id=>"txt18",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :insert_material,"Insert Material" %></td></tr>
+<tr><td><%= i.collection_select(:insert_material, InsertMaterial.select(:insert_material_list).order('insert_material_list ASC').uniq, :insert_material_list,:insert_material_list,:prompt=> "select") %></td></tr>
+<tr><td><%= i.label :bush_mat_issues,"Bush Qty Issues" %></td></tr>
+<tr><td><%= i.text_field :bush_mat_issues,:required => true %></td></tr>
+<tr><td><%= i.label :bush_qty_issued,"Bush Qty Issued in Kgs" %></td></tr>
+<tr><td><%= i.number_field :bush_qty_issued,:step => "0.0001",:id=>"txt20",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :bush_qty_return,"Bush Qty Return" %></td></tr>
+<tr><td><%= i.number_field :bush_qty_return,:step => "0.0001",:id=>"txt21",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :bush_rate,"Bush Rate per/Nos" %></td></tr>
+<tr><td><%= i.number_field :bush_rate,:step => "0.0001",:id=>"txt24",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :ferul_mat_issues,"Ferul Qty Issues" %></td></tr>
+<tr><td><%= i.text_field :ferul_mat_issues%></td></tr>
+<tr><td><%= i.label :ferul_qty_issued,"Ferul Qty Issued in kgs" %></td></tr>
+<tr><td><%= i.number_field :ferul_qty_issued,:step => "0.0001",:id=>"txt27",:onkeyup=>"sub()"%></td></tr>
+<tr><td><%= i.label :ferul_qty_return,"Ferul Qty Return" %></td></tr>
+<tr><td><%= i.number_field :ferul_qty_return,:step => "0.0001",:id=>"txt28",:onkeyup=>"sub()" %></td></tr>
+<tr><td><%= i.label :ferul_rate,"Ferul Rate per/Nos" %></td></tr>
+<tr><td><%= i.number_field :ferul_rate,:step => "0.0001",:id=>"txt30",:onkeyup=>"sub()"%></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+<br><br>
+<div style="width: 79%;">
+<table class="table">
+<tbody>
+<tr><td><%= i.label :rm_qty,"RM Qty" %></td></tr>
+<tr><td><%= i.number_field :rm_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt3",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :che_qty,"Colouring Agent Qty" %></td></tr>
+<tr><td><%= i.number_field :che_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt6",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :rg_qty,"RG Qty" %></td></tr>
+<tr><td><%= i.number_field :rg_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt9",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :bush_qty,"Bush Qty" %></td></tr>
+<tr><td><%= i.number_field :bush_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt22",:onkeyup=>"sub()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :ferul_qty,"Ferul Qty" %></td></tr>
+<tr><td><%= i.number_field :ferul_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt29",:onkeyup=>"sub()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :generated,"Lumps" %></td></tr>
+<tr><td><%= i.number_field :generated,:step => "0.0001",:id=>"txt10",:onkeyup=>"sub()",:required => true %></td></tr>
+<tr><td><%= i.label :lumps,"Net Consumption without Lumps" %></td></tr>
+<tr><td><%= i.number_field :lumps,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt11",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :qty_after_rg,"Production without RG in kgs" %></td></tr>
+<tr><td><%= i.number_field :qty_after_rg,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt13",:onkeyup=>"sub()",:readonly => "true" %></td></tr>
+<tr><td><%= i.label :rm_cost,"RM Cost" %></td></tr>
+<tr><td><%= i.number_field :rm_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt15",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :che_cost,"Colouring Agent Cost" %></td></tr>
+<tr><td><%= i.number_field :che_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt17",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :rg_cost,"RG Cost" %></td></tr>
+<tr><td><%= i.number_field :rg_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt19",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :bush_cost,"Bush Cost" %></td></tr>
+<tr><td><%= i.number_field :bush_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt25",:onkeyup=>"sub()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :ferul_cost,"Ferul Cost" %></td></tr>
+<tr><td><%= i.number_field :ferul_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt31",:onkeyup=>"sub()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :consolidated_qty,"Consolidated Qty" %></td></tr>
+<tr><td><%= i.number_field :consolidated_qty,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt23",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :consolidated_cost,"Consolidated Cost" %></td></tr>
+<tr><td><%= i.number_field :consolidated_cost,:style=>"background:#1B5C90;color:#fff;",:step => "0.0001",:id=>"txt26",:onkeyup=>"sub()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.hidden_field :updated_by,:value => @user %></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Update",:class=>"btn btn-info btn-sm"%></td></tr>
+</table>
+</center>
+</div>
+</div>
+
+</div>
+<%end%>
+</div>
+</div>
+</div>
+</div>
+</div>

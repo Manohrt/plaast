@@ -1,0 +1,25 @@
+<div class="bod">
+<div class="add"><%= link_to users_party_order_qty_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<h4>Party Qty Received</h4>
+<div class="table striped custab">
+<table class="table">
+<th>S.No</th>
+<th>Party</th>
+<th>Qty Received</th>
+<%t=0%>
+<%@arr.each do |j|%>
+<%t=t+1%>
+<tr>
+<td><%=t%></td>	
+<td><%=j[0]%></td>
+<td><%=j[1]%></td>
+</tr>
+<%end%>
+<tr>
+<td>total</td>
+<td><%=@total%></td></tr>
+<%$poq,$potl=@arr,@total%>
+</table>
+</div>
+</div>

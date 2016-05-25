@@ -1,0 +1,90 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Edit Purchase Summary
+  <div class="add"><%= link_to users_index_purchase_path, class: "btn btn-default",:title => 'List', :rel => 'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+
+
+<div class="row">
+<%= form_for @purchase, :url=>{:action => "update_purchase", :id => @purchase } do |i| %>
+<%= @purchase.errors.full_messages.first if @purchase.errors.any? %><div class="table1">
+<div class="col-md-4">
+	<div style="width: 79%; margin-left: 8%;">
+<table class="table">
+
+<tr><td><%= i.label :grn_no,"GRN No"%></td></tr>
+<tr><td><%= i.number_field :grn_no,:required => true%></td></tr>
+<tr><td><%= i.label :date," Date" ,:class=>"fa fa-calendar"%></td></tr>
+<tr><td><%= i.text_field :date,:id=>"txtFrom",:required => true%></td></tr>
+<tr><td><%= i.label :party%></td></tr>
+<tr><td>
+<%= i.collection_select(:party, PartyPurchase.select(:party_purchase_list).order('party_purchase_list ASC').uniq, :party_purchase_list, :party_purchase_list, {:prompt=> '--select--'},{:required => true})%> </td></tr>
+<tr><td><%= i.label :trading_material,"Trading Material"%></td></tr>
+<tr><td>
+<%= i.collection_select(:trading_material, TypeOfPurchase.select(:purchase_type).order('purchase_type ASC').uniq, :purchase_type, :purchase_type, {:prompt=> '--select--'},{:required => true})%> </td></tr>
+
+<tr><td><%= i.label :item%></td></tr>
+<tr><td><!--%= i.text_field :item,:required => true%-->
+<%= i.collection_select(:item, RawMaterial.select(:raw_material_list).order('raw_material_list ASC').uniq, :raw_material_list, :raw_material_list,{:prompt=>"--select--"},{:required => true})%></td></tr>
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+	<div style="padding: 8px 22px 20px 18px; width:79%">
+<table class="table">
+
+<tr><td><%= i.label :desc,"Bill Quantity"%></td></tr>
+<tr><td><%= i.text_field :desc,:required => true%></td></tr>
+<tr><td><%= i.label :qty_received%></td></tr>
+<tr><td><%= i.number_field :qty_received, :step => "0.001", :id=>"txt2", :onkeyup=>"div()", :required => true%></td></tr>
+<tr><td><%= i.label :qty_accepted%></td></tr>
+<tr><td><%= i.number_field :qty_accepted, :step => "0.001", :id=>"txt3", :onkeyup=>"div()", :required => true%></td></tr>
+<tr><td><%= i.label :rejected%></td></tr>
+<tr><td><%= i.text_field :rejected,:style=>"background:#1B5C90;color:#fff;", :value => (number_with_precision(i.object.rejected, :precision => 2)),:id=>"txt5",:onkeyup=>"div()",:readonly=> "true"%></td></tr>
+
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+	<div style="width: 79%;">
+<table class="table">
+
+<tr><td><%= i.label :bill_value%></td></tr>
+<tr><td><%= i.number_field :bill_value,:step => "0.001",:id=>"txt1",:onkeyup=>"div()",:required => true%></td></tr>
+<tr><td><%= i.label :rate,"Rate Per Kgs"%></td></tr>
+<tr><td><%= i.number_field :rate,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt4",:onkeyup=>"div()",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :debit%></td></tr>
+<tr><td><%= i.number_field :debit,:style=>"background:#1B5C90;color:#fff;",:id=>"txt6",:readonly=> "true"%></td></tr>
+<tr><td><%= i.label :reasons%></td></tr>
+<tr><td><%= i.text_field :reasons %></td></tr>
+<%= i.hidden_field :created_by,:value => @user %>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Update",:class=>"btn btn-info btn-sm"%></div>
+<%end%>
+</td></tr>
+</table>
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

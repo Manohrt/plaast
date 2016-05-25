@@ -1,0 +1,42 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Order Summary-Report
+                     <%if admin? and not @order_summary.blank?%>
+<div class="add"><%= link_to users_order_sum_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>                             
+<th>Sl.No</th>
+<%$oshd.each do|i|%>
+<th><%=i%></th>
+<%end%>
+</tr>
+</thead>
+<% if @order_summary.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+<tbody>
+<%t=1%>
+<%@order_summary.each do|k|%>
+<tr class="odd">
+<td>  <%= t %></td>
+<%$osfd.each do|i|%>
+<td>  <%= @order_summary.where(:id=>k.id).maximum(i.to_sym)%></td>
+<%end%>
+</tbody>
+<%t=t+1%>
+<% end %>
+</tr>
+</table>
+</div>
+<% end %>
+</div>
+</div>

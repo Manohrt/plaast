@@ -1,0 +1,51 @@
+<div class="demo-content1">
+<br><br>
+<table>
+<tr><td><h4> <%= link_to "User Registration",new_user_path,:class=>"btn btn-success"%></h4></td>
+<td align="right">
+</td>
+</tr>
+</table>
+<br><br><br><br>
+<table align="center" style="border:1px solid white;box-shadow:1px 3px 7px  #000000;">
+<%= form_for([Admin.new], validate: true, :url=>{:controller=>"users", :action => "admin_create", :remote => true}) do |i|%>
+<tr>
+<td>
+<table>
+<tr><td><%= link_to "Party Order", users_party_order_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Machine Used",users_mach_use_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Type of Chemical",users_chemical_type_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Colour Issues (Chemical)",users_chemical_new_path,:class=>"btn btn-success" %></tr></td>
+</table>
+</td>
+<td>
+<div class="pad">
+<table>
+<tr><td><%= link_to "Finished Goods Name",users_goods_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Raw Material",users_raw_material_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Party Purchase",users_party_purchase_new_path,:class=>"btn btn-success" %></tr></td>
+</table>
+</div>
+</td>
+<td>
+<table>
+<tr><td><%= link_to "Nature of Work",users_nature_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Mould No",users_mould_new_path,:class=>"btn btn-success" %></tr></td>
+<tr><td><br><br><%= link_to "Reason For Idle Time",users_reason_for_idle_new_path,:class=>"btn btn-success"%></tr></td>
+</table>
+</td>
+</tr>
+<%end%>
+</table>
+<br><br>
+<div class="dropdown">
+<div class="btn btn-success" onclick="myFunction()" class="dropbtn">Trash</div>
+  <div id="myDropdown" class="dropdown-content">
+     <%= link_to "Trash Order",users_trash_orderSummary_path%>
+    <%= link_to "Trash Issue",users_trash_issue_path%>
+     <%= link_to "Trash Labour",users_trash_labour_path%>
+     <%= link_to "Trash Purchase",users_trash_purchase_path%>
+  </div>
+</div>
+</div>
+</div>

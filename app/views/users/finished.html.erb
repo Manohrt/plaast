@@ -1,0 +1,88 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Finished Details
+  <div class="add"><%= link_to users_index_finished_path, class: "btn btn-default", :title => 'List', :rel =>'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+    
+    <br>
+    <div clas="row">
+<div class="col-md-4">
+	<div style="width: 79%;">
+<table class="table">
+
+<%= form_for :production_report , :url=>{:controller=>"users",:action=>"update_productionReport" }  do |i|%>
+
+<tr><td><%= i.label  :order_no,"Order No" %></td></tr>
+<tr><td><%= i.text_field :order_no,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@production_report.order_no%></td></tr>
+<tr><td><%= i.label  :order_date,"Order Date" %></td></tr>
+<tr><td><%= i.text_field :order_date,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:value=>@production_report.order_date %></td></tr>
+<tr><td><%= i.label :party,"Party" %></td></tr>
+<tr><td><%= i.text_field :party,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@production_report.party %></td></tr>
+<tr><td><%= i.label  :finished_goods_name,"Finished Goods Name" %></td></tr>
+<tr><td><%= i.text_field :finished_goods_name,:style=>"background:#1B5C90;color:#fff;", :readonly=> true%></td></tr>
+<tr><td><%= i.label  :total_no_of_items_produced,"Total no of Items Produced" %></td></tr>
+<tr><td><%= i.number_field :total_no_of_items_produced,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:step => "0.0001",:id=>"txt1",:onkeyup=>"ven()" %></td></tr>
+<tr><td><%= i.label  :rejected_nos,"Rejected nos" %></td></tr>
+<tr><td><%= i.number_field :rejected_nos,:style=>"background:#1B5C90;color:#fff;",:readonly=> true,:step => "0.0001",:id=>"txt2",:onkeyup=>"ven()" %></td></tr>
+<tr><td><%= i.label :material_cost,"Material Cost" %></td></tr>
+<tr><td><%= i.number_field :material_cost,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@issue.consolidated_cost %></td></tr>
+<tr><td><%= i.hidden_field :production_report_id,:style=>"background:#1B5C90;color:#fff;",:value=> @production_report.id %></td></tr>
+
+<% end %>
+	
+</table>
+</div>
+</div>
+
+
+<%= form_for :finished , :url=>{:controller=>"users",:action=>"get_finished" }  do |i|%>
+<div class="col-md-6">
+<table class ="table">
+
+<%= form_for :labour , :url=>{:controller=>"users",:action=>"update_labour" }  do |i|%>
+
+<tr><td><%= i.label  :cost_per_shift,"Labour Cost" %></td></tr>
+<tr><td><%= i.text_field :cost_per_shift,:style=>"background:#1B5C90;color:#fff;",:readonly => true,:value=>@labour.cost_per_shift%></td></tr>
+
+<%end%>
+
+<tr><td><%= i.label  :nett_available,"Nett Available" %></td></tr>
+<tr><td><%= i.text_field :nett_available,:style=>"background:#1B5C90;color:#fff;",:required => true,:step => "0.0001",:id=>"txt4",:onclick=>"ven()",:autofocus=>true,:readonly=> true%></td></tr>
+<tr><td><%= i.label  :freight,"Freight" %></td></tr>
+<tr><td><%= i.text_field :freight,:required=> true %></td></tr>
+<tr><td><%= i.label :overheads,"Overheads" %></td></tr>
+<tr><td><%= i.text_field :overheads,:required => true %></td></tr>
+<tr><td><%= i.label  :packing_materials,"Packing Materials" %></td></tr>
+<tr><td><%= i.text_field :packing_materials,:required=> true%></td></tr>
+<tr><td><%= i.hidden_field :production_report_id,:value=> @production_report.id %></td></tr>
+<%= i.hidden_field :created_by,:value => @user %>
+<%= i.hidden_field :order_no,:value=> @production_report.order_no %>
+<%= i.hidden_field :issue_date,:value=> @production_report.issue_date %>
+<%= i.hidden_field :issue_slip_no,:value=> @production_report.issue_slip_no %>
+<%= i.hidden_field :shift,:value=> @production_report.shift %>
+
+</table>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Submit",:class=>"btn btn-info btn-sm"%></td></tr>
+</table>
+</center>
+</div>
+</div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

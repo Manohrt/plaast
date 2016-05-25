@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:type="String">Issue Date</Data></Cell>
+        <Cell><Data ss:Type="String">Shift </Data></Cell>
+       <Cell><Data ss:Type="String">Machine No </Data></Cell>
+       <Cell><Data ss:Type="String">Product Name </Data></Cell>
+       <Cell><Data ss:Type="String">Mould </Data></Cell>
+       <Cell><Data ss:Type="String">Expected Qty </Data></Cell>
+       <Cell><Data ss:Type="String">Actual Qty </Data></Cell>
+       <Cell><Data ss:Type="String">No of mints idle </Data></Cell>
+       <Cell><Data ss:Type="String">Reason </Data></Cell>
+       <Cell><Data ss:Type="String">Supervisor</Data></Cell>
+       </Row>
+   <%t=0%>
+       <%$ss.each do|i|%>
+        <Row>
+        <%i.each do |j|%>
+        <Cell><Data ss:Type="String"><%=j%></Data></Cell>
+        <%end%>
+      </Row>
+        <%end%>
+    </Table>
+  </Worksheet>
+</Workbook>
+

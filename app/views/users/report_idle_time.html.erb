@@ -1,0 +1,27 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Idle Time Report-Labour
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+<%= form_for :labour, :url=>{ :controller => "users", :action => "idle_time_report",:method => "get"} do |f| %>
+  <center>
+  <table>
+  	<tr style=border-color:#252525>
+  <td style=border-color:#252525><%= f.label :initial_date,"From"  ,:style=>"Color:white;"%></td>
+  <td style=border-color:#252525><%= f.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %>
+  <td style=border-color:#252525><%= f.label :final_date,"To"  ,:style=>"Color:white;"%></td>
+  <td style=border-color:#252525><%= f.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+  <td style=border-color:#252525><%= f.submit "Submit",:class=>"btn btn-info" %></td>
+  </tr>
+ </table>
+</center>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>

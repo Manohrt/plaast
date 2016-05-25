@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nett_available: MyString
+  freight: MyString
+  overheads: MyString
+  packing_materials: MyString
+  spares_used: MyString
+  spares_cost: MyString
+
+two:
+  nett_available: MyString
+  freight: MyString
+  overheads: MyString
+  packing_materials: MyString
+  spares_used: MyString
+  spares_cost: MyString

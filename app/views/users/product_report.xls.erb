@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>      
+        <Row>
+          <Cell><Data ss:Type="String">S.No </Data></Cell>
+          <%$prhd.each do|i|%> 
+          <Cell><Data ss:Type="String"><%=i%></Data></Cell> 
+          <%end%>
+  	</Row>
+    <%t=1%>
+ <%$prod1.each do|k|%>
+ <%if ProductionReport.where(:issue_id=>k.id).any?%>
+      <Row>
+        <Cell><Data ss:Type="String"><%= t%> </Data></Cell>
+        <%$prfd.each do|i|%>
+        <%if Issue.column_names.include?(i)%>
+        <%aa= Issue.where(:id=>k.id).maximum(i.to_sym)%>
+        <Cell><Data ss:Type="String"><%=aa%></Data></Cell>
+        <%else%>
+          <%bb= ProductionReport.where("issue_id IS '#{k.id}'").maximum(i.to_sym)%>
+        <Cell><Data ss:Type="String"><%=bb%></Data></Cell>
+        <%end%>
+        <%end%>
+      </Row>
+      <%t=t+1%>
+<%end%>
+        <%end%>
+    </Table>
+  </Worksheet>
+</Workbook>

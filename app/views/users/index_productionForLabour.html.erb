@@ -1,0 +1,77 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+
+<div class="body-header">
+       Labour - Production Report     
+        <div class="add">
+		<% if not admin? %>
+		<%= link_to users_index_labour_path, class: "btn btn-default",:title => 'Add' do%>
+		<i class="fa fa-list"></i><%end%>
+		<%end%>
+	</div>
+</div>
+
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+     List of Production for Labours</div>
+<table class="table">
+    <thead>
+<tr>
+</tr>
+
+<tr>	
+<th>Sl.No</th>
+<th>Order No</th>
+<th>Issue Date</th>
+<th>Issue Slip No</th>
+<th>Party</th>
+<th>Shift</th>
+<th>Machine No</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<% if @production_report.blank? then %>
+
+<table><th>No records to display</th></table>
+
+<% else %>
+	
+<ul id = "Labours" >
+<%t=0%>
+<%  @production_report.each do |i|%>
+<% unless Labour.exists?(:production_report_id => i.id) %>
+<%t=t+1%>
+<!--%@x=i.id%-->
+<tr>
+<td><%= t %></td>
+<td><%= i.order_no %></td>
+<td><%= i.issue_date %></td>
+<td><%= i.issue_slip_no %></td>
+<td><%= i.party %></td>
+<td><%= i.shift %></td>
+<td><%= i.machine_no %></td>
+<% if not admin? %>
+<td><%= link_to users_add_labour_path(:id => i.id), class: "btn btn-default",:title => 'Add' do%>
+<i class="fa fa-plus"></i><%end%>
+</td>
+<%end%>
+</tr>
+<%end%>
+<%end%>
+</ul>
+<%end%>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+    <%= will_paginate @production_report, :container => false %>
+  </div>
+</div>
+</div>
+</div>
+</div>

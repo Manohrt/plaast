@@ -1,0 +1,52 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Production Report
+                    <%if admin? and not @prod.blank?%>
+<div class="add"><%= link_to users_product_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>                             	
+<%$prhd.each do|i|%>
+<th><%=i%></th>
+<%end%>
+</tr>
+</thead>
+
+<% if @prod.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+<tbody>
+<%t=0%>
+
+<%@prod.each do|k|%>
+<tr>
+	<%if ProductionReport.where(:issue_id=>k.id).any?%>
+<%$prfd.each do|i|%>
+
+<td>
+<!--% if Issue.column_names.include?(i)%-->
+
+<%if Issue.column_names.include?(i)%>
+<%= Issue.where(:id=>k.id).maximum(i.to_sym)%>
+
+<%else%>
+
+<%= ProductionReport.where("issue_id IS '#{k.id}'").maximum(i.to_sym)%>
+<%end%>
+</td>
+<%end%>
+<%end%>
+<%end%>
+</tbody>
+</table>
+<%end%>
+</div>
+</div>

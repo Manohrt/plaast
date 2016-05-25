@@ -1,0 +1,88 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+     <div class="body-container">
+       <div class="body-header">
+           Issues Report
+          </div>
+        <div class="body-content">
+          <div class="table-container">
+          	                      <div class="header">
+                              
+<%= form_for :issue, :url=>{ :controller => "users", :action => "issues_report",:method => "get"} do |i| %>
+<center><table>
+<tr style=border-color:#252525><td style=border-color:#252525><%= i.label :intial_date,"From" ,:style=>"Color:white;" %></td>
+<td style=border-color:#252525><%= i.text_field :intial_date,:id => "txtFrom",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.label :final_date,"To" ,:style=>"Color:white;" %></td>
+<td style=border-color:#252525><%= i.text_field :final_date,:id=>"txtTo",:required => true,:class=>"txt" %></td>
+<td style=border-color:#252525><%= i.submit "Submit",:class=>"btn btn-info", :onclick=> "return validate()" %></td></tr>
+  </table></center>
+</div>
+
+<br><br>
+ <table class="table">
+<tr><td><input type="checkbox" id="selectall" onClick="selectAll(this)" />  Select All</td></tr>
+
+<tr>
+<td><input type="checkbox" name=subject[] value="order_no/Order Number " >  Order Number</td>
+<td><input type="checkbox" name=subject[] value="order_date/Order Date" >  Order Date</td>
+<td><input type="checkbox" name=subject[] value="party/Party" >  Party</td>
+<td><input type="checkbox" name=subject[] value="issue_slip_no/Issue Slip Number" >  Issue Slip_no</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="Issue_date/Issu Date">  Issue_date</td>
+<td><input type="checkbox" name=subject[] value="machine_no/Machine Number">  Machine Number</td>
+<td><input type="checkbox" name=subject[] value="shift/Shift" >  Shift</td>
+<td><input type="checkbox" name=subject[] value="rm_issues/RM Issues">  RM Issues</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rm_mat_qty/RM Mat Qty" >  RM Mat Qty</td>
+<td><input type="checkbox" name=subject[] value="rm_qty_return/RM Qty Return" >  RM Qty Return</td>
+<td><input type="checkbox" name=subject[] value="rm_rate/Raw material Rate per kg/Nos" >  Raw material Rate per kg/Nos</td>
+<td><input type="checkbox" name=subject[] value="chemicals_type/Colouring Agent Type" >  Colouring Agent Type</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="chem_qty/Colouring Agent Qty">  Colouring Agent Qty</td>
+<td><input type="checkbox" name=subject[] value="chem_qty_return/Colouring Agent Qty Return">  Colouring Agent Qty Return</td>
+<td><input type="checkbox" name=subject[] value="rg_material_issues/RG Material Issues" >  RG Material Issues</td>
+<td><input type="checkbox" name=subject[] value="chem_rate/Colouring Agent Rate Per Kg/Nos">  Colouring Agent Rate Per Kg/Nos</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rg_material_issues/RG Material Issues" >  RG Material Issues</td>
+<td><input type="checkbox" name=subject[] value="rg_qty_issued/RG Qty Issued" >  RG Qty Issued</td>
+<td><input type="checkbox" name=subject[] value="rg_qty_return/RG Qty Return" >  RG Qty Return</td>
+<td><input type="checkbox" name=subject[] value="rg_consume/RG Generated" >  RG Generated</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rg_rate/Reground Rate Per Kg/Nos" >  Reground Rate Per Kg/Nos</td>
+<td><input type="checkbox" name=subject[] value="insert_material/Insert Material" >  Insert Material</td>
+<td><input type="checkbox" name=subject[] value="bush_mat_issues/Bush Qty Issues">  Bush Qty Issues</td>
+<td><input type="checkbox" name=subject[] value="bush_qty_issued/Bush Qty Issued in kgs" >  Bush Qty Issued in kgs</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="bush_qty_return/Bush Qty Return" >  Bush Qty Return</td>
+<td><input type="checkbox" name=subject[] value="bush_rate/Bush Rate Per/Nos" >  Bush Rate Per/Nos</td>
+<td><input type="checkbox" name=subject[] value="ferul_mat_issues/Ferul Qty Issued">  Ferul Qty Issued</td>
+<td><input type="checkbox" name=subject[] value="ferul_qty_issued/Ferul Qty Issued in kgs">  Ferul Qty Issued in kgs</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="ferul_qty_return/Ferul Qty Return">   Ferul Qty Return</td>
+<td><input type="checkbox" name=subject[] value="ferul_rate/Ferul Rate Per/Nos">   Ferul Rate Per/Nos</td>
+<td><input type="checkbox" name=subject[] value="rm_qty/RM Qty" >  RM Qty</td>
+<td><input type="checkbox" name=subject[] value="che_qty/Colouring Agent Qty" >  Colouring Agent Qty</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rg_qty/RG Qty" >  RG Qty</td>
+<td><input type="checkbox" name=subject[] value="bush_qty/Bush Qty">  bush_qty</td>
+<td><input type="checkbox" name=subject[] value="ferul_qty/Ferul Qty">   Ferul Qty</td>
+<td><input type="checkbox" name=subject[] value="generated/Lumps" >  Lumps</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="lumps/Net Consumption without Lumps" >  Net Consumption without Lumps</td>
+<td><input type="checkbox" name=subject[] value="qty_after_rg/Production without RG in kgs" >  Production without RG in kgs</td>
+<td><input type="checkbox" name=subject[] value="rm_cost/RM Cost" >  RM Cost</td>
+<td><input type="checkbox" name=subject[] value="che_cost/Colouring Agent Cost" >  Colouring Agent Cost</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="rg_cost/RG Cost">  RG Cost</td>
+<td><input type="checkbox" name=subject[] value="bush_cost/Bush Cost" >  Bush Cost</td>
+<td><input type="checkbox" name=subject[] value="ferul_cost/Ferul Cost">   Ferul Cost</td>
+<td><input type="checkbox" name=subject[] value="consolidated_qty/Consolidated Qty">  Consolidated Qty</td>
+</tr><tr>
+<td><input type="checkbox" name=subject[] value="consolidated_cost/Consolidated Cost">  Consolidated Cost</td>
+</tr>
+</table>
+<% end %>
+</div>
+</div>
+
+

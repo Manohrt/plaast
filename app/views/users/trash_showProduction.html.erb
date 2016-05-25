@@ -1,0 +1,106 @@
+<div class="bod">
+<div class="col-md-10 col-sm-8 body-wrap">
+<div class="body-container">
+<div class="body-header">
+<h4>Show Production Report </h4>
+</div>
+<div class="body-content">
+<div class="table-container">
+
+
+<div class="popup-wrapper" id="popup"><div class="popup-container">
+<div class="row">
+<h3 align = "right"><b>
+<%= link_to "", users_trash_production_path,:class=>"fa fa-close" %></b></h3>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div style="padding-left:20px;width:80%;">
+<table class="table">
+<tr><td>Order No:</td>
+<td><%= @issue.order_no %></td></tr>
+<tr><td>order Date:</td>
+<td><%= @issue.order_date %></td></tr>
+<tr><td>Party:</td>
+<td><%= @issue.party %></td></tr>
+<tr><td>Issue Slip No:</td>
+<td><%= @issue.issue_slip_no %></td></tr>
+<tr><td>Issue Date:</td>
+<td><%= @issue.issue_date %></td></tr>
+<tr><td>Shift:</td>
+<td><%= @issue.shift %></td></tr>
+<tr><td>Machine Name:</td>
+<td><%= @issue.machine_no %></td></tr>
+<tr><td>Raw Material Issues:</td>
+<td><%= @issue.rm_issues %></td></tr>
+<tr><td>Type of Colouring Agent:</td>
+<td><%= @issue.chemicals_type %></td></tr>
+<tr><td>Colour Issues(Colouring Agent):</td>
+<td><%= @issue.chemicals %></td></tr>
+<tr><td>Re-Ground Material Issues(RG):</td>
+<td><%= @issue.rg_material_issues %></td></tr>
+<tr><td>Qty After RG:</td>
+<td><%= @issue.qty_after_rg.to_f.round(2) %></td></tr>
+<tr><td>Bush:</td>
+<td><%= @issue.bush_mat_issues %></td></tr>
+<tr><td>Consolidated Cost:</td>
+<td><%= @issue.consolidated_cost.to_f.round(2) %></td></tr>
+<tr><td>Finished Goods Name:</td>
+<td><%= @production_report.finished_goods_name %></td></tr>
+<tr><td>Total no of Item:</td>
+<td><%= @production_report.total_no_of_items_produced %></td></tr>
+</table>
+</div>
+</div>
+
+<div class="col-md-6">
+<div style="width:80%;">
+<table class="table">
+<tr><td>Weight Per Item at Production:</td>
+<td><%= @production_report.weight_per_item.to_f.round(4) %></td></tr>
+<tr><td>Total Weight Consumed:</td>
+<td><%= @production_report.total_weight_consumed.to_f.round(2) %></td></tr>
+<tr><td>Standard Weight:</td>
+<td><%= @production_report.standard_weight.to_f.round(2) %></td></tr>
+<tr><td>No of kg Used for Production:</td>
+<td><%= @production_report.no_of_kgs_used_for_production.to_f.round(2) %></td></tr>
+<tr><td>Variance:</td>
+<td><%= @production_report.variance.to_f.round(2) %></td></tr>
+<tr><td>Rejected No:</td>
+<td><%= @production_report.rejected_nos %></td></tr>
+<tr><td>Weight Per Item:</td>
+<td><%= @production_report.weight_per_item.to_f.round(4) %></td></tr>
+<tr><td>Rejected nos wt for Re Grounding:</td>
+<td><%= @production_report.rejected_nos_wt_for_re_grounding.to_f.round(2) %></td></tr>
+<tr><td>Lumps:</td>
+<td><%= @production_report.lumps.to_f.round(2) %></td></tr>
+<tr><td>Realization in Wt:</td>
+<td><%= @production_report.realization_in_wt.to_f.round(3) %></td></tr>
+<tr><td>Realization (in %):</td>
+<td><%= @production_report.realization_in_per.to_f.round(3) %></td></tr>
+<tr><td>Cost/Unit:</td>
+<td><%= @production_report.cost_per_unit.to_f.round(3) %></td></tr>
+<tr><td>Power Unit Reading: </td>
+<td><%= @production_report.power_unit_reading.to_f.round(3)%></td></tr>
+<tr><td>Power Unit Cost/Kg:</td>
+<td><%= @production_report.power_unit_cost_kg.to_f.round(3)%></td></tr>
+<tr><td>Power Unit Cost/Piece: </td>
+<td><%= @production_report.power_unit_cost_piece.to_f.round(3) %></td></tr>
+<tr><td>Created_by</td>
+<td><%=@production_report.created_by %></td></tr>
+<tr><td>Updated_by:</td>
+<td><%= @production_report.updated_by %></td></tr>
+<tr><td>Created_at:</td>
+<td><%= @production_report.created_at.strftime("%m/%d/%y") %></td></tr>
+<tr><td>Updated_at:</td>
+<td><%= @production_report.updated_at.strftime("%m/%d/%y")%></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

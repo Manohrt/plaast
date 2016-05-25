@@ -1,0 +1,92 @@
+<div class="bod">
+	<div class="col-md-10 col-sm-8 body-wrap">
+	<div class="body-container">
+                  <div class="body-header">
+                      Order Summary
+  <div class="add"><%= link_to users_index_orderSummary_path, class: "btn btn-default", :title => 'List', :rel =>'tooltip' do%>
+<i class="fa fa-list"></i><%end%>
+</div>
+                    </div>
+                    <div class="body-content">
+                        <div class="table-container">
+<%= form_for([@order_summary], validate: true, :url=>{:controller=>"users", :action => "get_order"}) do |i|%>
+<div class="col-md-4">
+	<div style="width: 79%;">
+<table class="table">
+<tbody>
+<tr><td><%= i.label :order_no,"Order No" %></td></tr>
+<tr><td><%= i.number_field :order_no, :required => true,:autofocus=>true%></td></tr>
+<tr><td><%= i.label :order_date," Order Date",:class=>"fa fa-calendar" %></td></tr>
+<tr><td><%= i.text_field :order_date,:id=>"txtFrom",:required => true %></div></td></tr>
+<tr><td><%= i.label :scheduled_date," Scheduled Date of Delivery " ,:class=>"fa fa-calendar"%></td></tr>
+<tr><td><%= i.text_field :scheduled_date,:id=>"txtTo",:required => true %></div></td></tr>
+<tr><td><%= i.label :party,"Party" %></td></tr>
+<tr><td><%= i.collection_select(:party, PartyOrder.select(:party_order_list).order('party_order_list ASC').uniq, :party_order_list, :party_order_list, {:prompt=> '--select--'}, {:required => true})%> </td></tr>
+<tr><td ><%= i.label :mould_no,"Mould Number"%></td></tr>
+<tr><td ><%= i.collection_select(:mould_no, MouldNo.select(:mould_no_list).order('mould_no_list ASC').uniq, :mould_no_list, :mould_no_list,:prompt=> "--select--") %></td></tr>
+<tr><td><%= i.label :goods_finished,"Finished Goods Name" %></td></tr>
+<tr><td>
+<%= i.collection_select(:goods_finished, FinishedGoodsName.select(:finished_goods_name_list).order('finished_goods_name_list ASC').uniq, :finished_goods_name_list, :finished_goods_name_list, {:prompt=> '--select--'},{:required=>true})%> 
+</td></tr>
+<tr><td><%= i.label :nos,"Order Qty in Nos"%></td></tr>
+<tr><td ><%= i.number_field :nos, :required => true,:step => "0.0001",:id=>"txt1",:onkeyup=>"sum()" %></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+	<div style="padding: 8px 22px 20px 18px; width:79%">
+<table class="table">
+<thead>
+<h6 style="font-size:18px;">Quantity Requirement Plan</h6><br>
+</thead>
+<tbody>
+<tr><td><%= i.label :ra_material,"Raw Material Grade" %></td></tr>
+<tr><td>
+<%= i.collection_select(:ra_material, RawMaterial.select(:raw_material_list).order('raw_material_list ASC').uniq, :raw_material_list, :raw_material_list,{:prompt=>"--select--"},{:required=>true})%></td></tr>
+<tr><td><%= i.label :chemicals,"Colouring agent" %></td></tr>
+<tr><td><%= i.collection_select(:chemicals, Chemical.select(:chemical_list).order('chemical_list ASC').uniq, :chemical_list, :chemical_list,{:prompt=>true},{:required=>true})%></td></tr>
+<!--tr><td><-%= i.label :chel,"Colouring agent (1)" %></td></tr>
+<tr><td><-%= i.collection_select(:chel, Chemical.select(:chemical_list).order('chemical_list ASC').uniq, :chemical_list, :chemical_list,{:prompt=>true},{:required=>true})%></td></tr-->
+<tr><td><%= i.label :reground_material,"Re-Ground Material (RG)"%></td></tr>
+<tr><td><%= i.number_field :reground_material,:step=>"0.0001",:required => true%></td></tr>
+<tr><td><%= i.label :rm_qty_per_item,"Component weight" %></td></tr>
+<tr><td ><%= i.number_field :rm_qty_per_item,:required => true,:step => "0.0001",:id=>"txt2",:onkeyup=>"sum()" %></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="col-md-4">
+<br><br>
+<div style="width: 79%;">
+<table class="table">
+<tbody>
+<tr><td><%= i.label :total_kgs,"Total Kgs" %></td></tr>
+<tr><td ><%= i.number_field :total_kgs,:style=>"background:#1B5C90;color:#fff;",:step => "0.001",:id=>"txt4",:onkeyup=>"sum()",:readonly=> "true" %></td></tr>
+<tr><td><%= i.label :color_std,"Colour Dosage" %></td></tr>
+<tr><td><%= i.number_field :color_std, :required => true,:step => "0.0001",:id=>"txt3",:onkeyup=>"sum()" %></td></tr>
+<!--tr><td><-%= i.label :color_sd,"Colour Dosage (1)" %></td></tr>
+<tr><td><-%= i.text_field :color_sd, :required => true,:step => "0.001" %></td></tr-->
+<tr><td><%= i.label :chemical_qty,"Colouring agent Qty"%></td></tr>
+<tr><td><%= i.number_field :chemical_qty,:style=>"background:#1B5C90;color:#fff;", :readonly=> "true",:step => "0.0001",:id=>"txt6",:onkeyup=>"sum()" %></td></tr>
+<tr><td><%= i.label :total_rm_kgs,"Total Raw Material Kgs" %></td></tr>
+<tr><td><%= i.number_field :total_rm_kgs,:style=>"background:#1B5C90;color:#fff;",:id=>"txt5",:step => "0.0001",:onkeyup=>"sum()",:readonly=> "true" %></td></tr>
+<%= i.hidden_field :created_by,:value => @user %>
+</tbody>
+</table>
+</div>
+</div>
+<div class="col-md-12">
+<center>
+<table>
+<tr><td><%= i.submit "Submit",:class=>"btn btn-info btn-sm"%></td></tr>
+<%end%>
+</table>
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>

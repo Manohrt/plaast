@@ -1,0 +1,71 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_no: MyString
+  order_date: MyString
+  type: 
+  color_issues: MyString
+  rm_qty: MyString
+  che_qty: MyString
+  rg_qty: MyString
+  party: MyString
+  issue_slip_no: MyString
+  issue_date: MyString
+  machine_no: MyString
+  shift: MyString
+  chem_qty: MyString
+  chem_qty_return: MyString
+  chem_rate: MyString
+  generated: MyString
+  lumps: MyString
+  qty_after_rg: MyString
+  rm_issues: MyString
+  rm_qty: MyString
+  rm_consume: MyString
+  rm_qty_return: MyString
+  rm_rate: MyString
+  rg_material_issues: MyString
+  rg_qty_issued: MyString
+  rg_qty_return: MyString
+  rg_consume: MyString
+  rg_rate: MyString
+  rm_cost: MyString
+  che_cost: MyString
+  rg_cost: MyString
+  consolidated_qty: MyString
+  consolidated_cost: MyString
+
+two:
+  order_no: MyString
+  order_date: MyString
+  type: 
+  color_issues: MyString
+  rm_qty: MyString
+  che_qty: MyString
+  rg_qty: MyString
+  party: MyString
+  issue_slip_no: MyString
+  issue_date: MyString
+  machine_no: MyString
+  shift: MyString
+  chem_qty: MyString
+  chem_qty_return: MyString
+  chem_rate: MyString
+  generated: MyString
+  lumps: MyString
+  qty_after_rg: MyString
+  rm_issues: MyString
+  rm_qty: MyString
+  rm_consume: MyString
+  rm_qty_return: MyString
+  rm_rate: MyString
+  rg_material_issues: MyString
+  rg_qty_issued: MyString
+  rg_qty_return: MyString
+  rg_consume: MyString
+  rg_rate: MyString
+  rm_cost: MyString
+  che_cost: MyString
+  rg_cost: MyString
+  consolidated_qty: MyString
+  consolidated_cost: MyString

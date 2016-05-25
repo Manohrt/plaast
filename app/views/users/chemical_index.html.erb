@@ -1,0 +1,33 @@
+<div class="lef">
+<table align="right">
+<tr>
+<td><%= link_to image_tag("/assets/plus1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Add', :rel => 'tooltip'),users_chemical_new_path%>
+</td>
+<td><%= link_to image_tag("/assets/list.png", height: '30', width: '30',:class=>"img-circle",:title => 'List', :rel => 'tooltip'),users_index_admin_path(@admin)%></td>
+</tr>
+</table>
+</div>
+<br><br>
+
+<div class="demo-content1">
+<center><b>Chemical Lists</b></center>
+<br><br><br>
+<div class="fott">
+<div class="digg_pagination" align="right">
+    <%= will_paginate  @chemical, :container => false %>
+  </div>
+</div>
+<table border="3" align="center" style="border:1px solid white;box-shadow:1px 3px 7px  #000000;">
+<% @chemical.each do |i| %>
+<tr>
+<td><div class="fot"><%= i.chemical_list%></div></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'chemical_delete', :id => i.id }%></td>
+</tr>
+<%end%>
+</table>
+<div class="fott">
+<div class="digg_pagination" align="left">
+    <%= will_paginate  @chemical, :container => false %>
+  </div>
+</div>
+</div>

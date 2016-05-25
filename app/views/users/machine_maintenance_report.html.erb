@@ -1,0 +1,73 @@
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      List of Machine Maintenance
+                    <%if admin? and not @machine_maintenance.blank? %>
+<div class="add"><%= link_to users_machine_maintenance_xls_report_path(format: "xls"),:class=>"btn btn-info btn-sm" do%>
+<i class="fa fa-arrow-circle-down">Download</i><%end%></div><br>
+<%end%>
+
+                    </div>
+                    <div class="body-content">
+                       <div class="table-container">
+      <table class="table">                        
+ <thead>
+ <tr>                             
+<th>Sl.No</th>	
+<th>Machine No</th>
+<th>Type of problem</th>
+<th>Date</th>
+<th>Spare name</th>
+<th>Spare cost</th>
+</tr>
+</thead>
+
+<% if @machine_maintenance.blank? then %>
+<table><th>No records to display</th></table>
+
+<% else %>
+<%t=0%>
+<%@aa=[]%>
+
+<%if $mno!=""%>
+<% @machine_maintenance.where(:mach_no=>$mno).each do |i| %>
+<%t=t+1%>
+<tr class="odd">
+<td><%= t%></td>	
+<td><%= i.mach_no%></td>
+<td><%= i.type_of_prob%></td>
+<td><%= i.date%></td>
+<td><%= i.spare_name%></td>
+<td><%= i.spare_cost%></td>
+<%@aa << (i.spare_cost).to_f%>
+<%end%>
+
+</tr>
+<%else%>
+<% @machine_maintenance.each do |i| %>
+<%t=t+1%>
+<tr class="even">
+<td><%= t%></td>	
+<td><%= i.mach_no%></td>
+<td><%= i.type_of_prob%></td>
+<td><%= i.date%></td>
+<td><%= i.spare_name%></td>
+<td><%= i.spare_cost%></td>
+<%@aa<<(i.spare_cost).to_f%>
+<%end%>
+</tr>
+<%end%>
+<%@aa=@aa.sum%>
+<tr>
+<td></td>	
+<td></td>
+<td></td>
+<td></td>
+<th>Total</th>
+<th><%= @aa%></th>
+
+<% end %>
+</table>
+</div>
+</div>

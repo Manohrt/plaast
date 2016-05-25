@@ -1,0 +1,43 @@
+<div class="bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+<div class="set">
+<div class="body-container">
+<div class="body-header">
+Purchase Party
+</div>
+<div class="body-content">
+<div class="table-container">
+<div class="header">
+    List of Purchase Party
+</div>
+<table class="table">
+<thead>
+<tr>
+<th>Party - Purchase</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+ <%= form_for([@party_purchase], validate: true, :url=>{:controller=>"users", :action => "party_purchse_create"}) do |i|%>
+<tr><td><%=i.text_field:party_purchase_list,:required => true%>
+<td align="center"><%= i.submit "Add",:class=>"btn btn-info"%>
+ <%end%></td></tr>
+
+<% @party_purchase1.each do |i| %>
+<tr>
+<td><div class="fot"><%= i.party_purchase_list%></div></td>
+<td><%= link_to image_tag("/assets/trash1.png", height: '20', width: '20',:class=>"img-circle",:title => 'Delete', :rel => 'tooltip',:onclick=>"if (confirm('Are you sure!!!')) commentDelete(1); return false"),{:action => 'party_purchse_delete', :id => i.id }%></td>
+
+</tr>
+<%end%>
+</tbody>
+</table>
+</div>
+</div>
+<div class="digg_pagination" align="right">
+    <%= will_paginate @party_purchase1, :container => false %>
+  </div>
+</div>
+</div>
+</div>
+

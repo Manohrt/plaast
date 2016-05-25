@@ -1,0 +1,105 @@
+<!--%= render file: "#{Rails.root}/app/views/users/dashboard.html.erb" %-->
+<!--%= render template: "users/dashboard" %-->
+<div class = "bod">
+  <div class="col-md-10 col-sm-8 body-wrap">
+              <div class="body-container">
+                  <div class="body-header">
+                      Dashboard
+                    </div>
+                    <div class="body-content">
+                      <div class="header">
+                    <center>  OEE Report for <%=Date.yesterday.strftime('%d-%m-%Y  (%A)')%></center>
+                                </div>
+                        <div class="table-container">
+
+                                <table class="table" border="1">
+<% @mail = [] %>
+      <% @lab = Labour.where('issue_date =?',Date.yesterday.strftime('%m/%d/%Y'))%>
+      <% @lab.each do |i|%>
+      <% pr = ProductionReport.where(:id => i.production_report_id ).pluck(:id,:rejected_nos,:finished_goods_name,:weight_per_item,:total_weight_consumed,:rejected_nos_wt_for_re_grounding)%>
+      <% pr << Issue.where(:id => i.issue_id).pluck(:chemicals,:rm_issues)%>
+      <% pr = pr.flatten %>
+      <%  @l = Array.new << i.machine_no <<  i.shift << i.issue_date << pr[2] << pr[6] << pr[3] << i.mould << pr[7] << i.no_of_cavity << i.cycle_time << i.pro_time << i.expected_production << i.total_no_of_items_produced  << pr[1]  << pr[5] << pr[4] << i.no_of_mins_idle << i.supervisor_name %>
+      <%  @mail << @l %>
+<%end%>
+<thead>
+<tr>
+<th>Machine No</th>
+<th>Shift</th>
+<th>Issue Date</th>
+<th>Product Name</th>
+<th>Colour</th>
+<th>Product Weight</th>
+<th>Mould No</th>
+<th>Raw Material</th>
+<th>No of Cavity</th>
+<th>Expected Cycle Time</th>
+<th>Actual Cycle Time</th>
+<th>Expected Production</th>
+<th>Actual Production</th>
+<th>Rejected Nos</th>
+<th>Rejected Weight</th>
+<th>Total Weight</th>
+<th>No of Mins Idle-Time</th>
+<th>Supervisor</th>
+</tr>
+</thead>
+<ul id = "Labours" >
+
+<% @a = [] %>
+<% @b = [] %>
+<% @c = [] %>
+<% @u = [] %>
+<% @f = [] %>
+
+<% if @mail.blank? %>
+
+<table>
+<tr><th>No records to display</th></tr></table>
+
+<% else %>
+
+<% @mail.each do |i| %>
+<tbody>
+<tr>
+<td><%= i[0] %></td>
+<td><%= i[1] %></td>
+<td><%= i[2] %></td>
+<td><%= i[3] %></td>
+<td><%= i[4] %></td>
+<td><%= i[5].to_f.round(4) %></td>
+<td><%= i[6] %></td>
+<% @p = ((@n.to_f/@m.to_f)*100).round(2) %>
+<td><%= i[7] %></td>
+<% @d =((@q.to_f/@n.to_f)*100).round(2)%>
+<td><%= i[8] %></td>
+<td><%= i[9] %></td>
+<td><%= i[10].to_i %></td>
+<td><%= @m = i[11].to_i %></td>
+<% @a << @m %>
+<td><%= @n = i[12].to_i %></td>
+<% @b << @n %>
+<td><%= i[13]%></td>
+<td><%= i[14].to_f.round(2) %></td>
+<td><%= i[15].to_f.round(2) %></td>
+<td><%= @o = i[16].to_i %></td>
+<% @c << @o %>
+<td><%= i[17] %></td>
+</tr>
+<%end%>
+<tr>
+<td><h4>Total</h4></td>
+<td></td><td></td><td></td><td></td><td></td>
+<td></td><td></td><td></td><td></td><td></td>
+<td><%= @tot=@a.inject{|sum,i|sum+i}%></td>
+<td><%= @tot1=@b.inject{|sum,i|sum+i}%></td>
+<td></td><td></td><td></td>
+<td><%= @tot2=@c.inject{|sum,i|sum+i}%></td>
+</tr>
+</tbody>
+<% end %>
+</table>
+</div>
+</div>
+</div>
+</div>
